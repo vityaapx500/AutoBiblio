@@ -16,5 +16,11 @@ namespace Автобиблио
         {
             InitializeComponent();
         }
+
+        private void btnNewFormular_Click(object sender, EventArgs e)
+        {
+            ReadersFormular RF = new ReadersFormular();
+            RF.Show();
+        }
     }
 }

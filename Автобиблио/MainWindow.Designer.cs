@@ -31,7 +31,15 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.IssuedBook = new System.Windows.Forms.TabPage();
             this.ReadersFormulars = new System.Windows.Forms.TabPage();
+            this.pnManipulationFormular = new System.Windows.Forms.Panel();
+            this.button5 = new System.Windows.Forms.Button();
+            this.dgvFormulars = new System.Windows.Forms.DataGridView();
             this.BooksJournal = new System.Windows.Forms.TabPage();
+            this.pnManipulationJournal = new System.Windows.Forms.Panel();
+            this.btnDeleteBook = new System.Windows.Forms.Button();
+            this.btnUpdateBook = new System.Windows.Forms.Button();
+            this.btnInsertBook = new System.Windows.Forms.Button();
+            this.dgvJournal = new System.Windows.Forms.DataGridView();
             this.Settings = new System.Windows.Forms.TabPage();
             this.Roles = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -77,13 +85,14 @@
             this.lblSurName = new System.Windows.Forms.Label();
             this.cbRole = new System.Windows.Forms.ComboBox();
             this.lblRole = new System.Windows.Forms.Label();
-            this.dgvJournal = new System.Windows.Forms.DataGridView();
-            this.pnManipulation = new System.Windows.Forms.Panel();
-            this.btnInsertBook = new System.Windows.Forms.Button();
-            this.btnUpdateBook = new System.Windows.Forms.Button();
-            this.btnDeleteBook = new System.Windows.Forms.Button();
+            this.btnNewFormular = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
+            this.ReadersFormulars.SuspendLayout();
+            this.pnManipulationFormular.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFormulars)).BeginInit();
             this.BooksJournal.SuspendLayout();
+            this.pnManipulationJournal.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvJournal)).BeginInit();
             this.Roles.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRoles)).BeginInit();
@@ -94,8 +103,6 @@
             this.pnSearch.SuspendLayout();
             this.gbManipulation.SuspendLayout();
             this.pbButtons.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvJournal)).BeginInit();
-            this.pnManipulation.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -118,23 +125,54 @@
             this.IssuedBook.Location = new System.Drawing.Point(4, 22);
             this.IssuedBook.Name = "IssuedBook";
             this.IssuedBook.Padding = new System.Windows.Forms.Padding(3);
-            this.IssuedBook.Size = new System.Drawing.Size(1100, 436);
+            this.IssuedBook.Size = new System.Drawing.Size(1082, 461);
             this.IssuedBook.TabIndex = 0;
             this.IssuedBook.Text = "Выдача книги";
             this.IssuedBook.UseVisualStyleBackColor = true;
             // 
             // ReadersFormulars
             // 
+            this.ReadersFormulars.Controls.Add(this.pnManipulationFormular);
+            this.ReadersFormulars.Controls.Add(this.dgvFormulars);
             this.ReadersFormulars.Location = new System.Drawing.Point(4, 22);
             this.ReadersFormulars.Name = "ReadersFormulars";
-            this.ReadersFormulars.Size = new System.Drawing.Size(1100, 436);
+            this.ReadersFormulars.Size = new System.Drawing.Size(1082, 461);
             this.ReadersFormulars.TabIndex = 2;
             this.ReadersFormulars.Text = "Формуляры читателей";
             this.ReadersFormulars.UseVisualStyleBackColor = true;
             // 
+            // pnManipulationFormular
+            // 
+            this.pnManipulationFormular.Controls.Add(this.btnNewFormular);
+            this.pnManipulationFormular.Controls.Add(this.button5);
+            this.pnManipulationFormular.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnManipulationFormular.Location = new System.Drawing.Point(0, 0);
+            this.pnManipulationFormular.Name = "pnManipulationFormular";
+            this.pnManipulationFormular.Size = new System.Drawing.Size(1082, 29);
+            this.pnManipulationFormular.TabIndex = 4;
+            // 
+            // button5
+            // 
+            this.button5.Dock = System.Windows.Forms.DockStyle.Right;
+            this.button5.Location = new System.Drawing.Point(911, 0);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(171, 29);
+            this.button5.TabIndex = 5;
+            this.button5.Text = "Удалить формуляр читателя";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // dgvFormulars
+            // 
+            this.dgvFormulars.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFormulars.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvFormulars.Location = new System.Drawing.Point(0, 0);
+            this.dgvFormulars.Name = "dgvFormulars";
+            this.dgvFormulars.Size = new System.Drawing.Size(1082, 461);
+            this.dgvFormulars.TabIndex = 3;
+            // 
             // BooksJournal
             // 
-            this.BooksJournal.Controls.Add(this.pnManipulation);
+            this.BooksJournal.Controls.Add(this.pnManipulationJournal);
             this.BooksJournal.Controls.Add(this.dgvJournal);
             this.BooksJournal.Location = new System.Drawing.Point(4, 22);
             this.BooksJournal.Name = "BooksJournal";
@@ -143,6 +181,56 @@
             this.BooksJournal.TabIndex = 1;
             this.BooksJournal.Text = "Журнал фонда";
             this.BooksJournal.UseVisualStyleBackColor = true;
+            // 
+            // pnManipulationJournal
+            // 
+            this.pnManipulationJournal.Controls.Add(this.btnDeleteBook);
+            this.pnManipulationJournal.Controls.Add(this.btnUpdateBook);
+            this.pnManipulationJournal.Controls.Add(this.btnInsertBook);
+            this.pnManipulationJournal.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnManipulationJournal.Location = new System.Drawing.Point(3, 401);
+            this.pnManipulationJournal.Name = "pnManipulationJournal";
+            this.pnManipulationJournal.Size = new System.Drawing.Size(1076, 57);
+            this.pnManipulationJournal.TabIndex = 1;
+            // 
+            // btnDeleteBook
+            // 
+            this.btnDeleteBook.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnDeleteBook.Location = new System.Drawing.Point(704, 0);
+            this.btnDeleteBook.Name = "btnDeleteBook";
+            this.btnDeleteBook.Size = new System.Drawing.Size(372, 57);
+            this.btnDeleteBook.TabIndex = 2;
+            this.btnDeleteBook.Text = "Списать экземпляр";
+            this.btnDeleteBook.UseVisualStyleBackColor = true;
+            // 
+            // btnUpdateBook
+            // 
+            this.btnUpdateBook.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnUpdateBook.Location = new System.Drawing.Point(340, 0);
+            this.btnUpdateBook.Name = "btnUpdateBook";
+            this.btnUpdateBook.Size = new System.Drawing.Size(364, 57);
+            this.btnUpdateBook.TabIndex = 1;
+            this.btnUpdateBook.Text = "Внести изменения данных о книге";
+            this.btnUpdateBook.UseVisualStyleBackColor = true;
+            // 
+            // btnInsertBook
+            // 
+            this.btnInsertBook.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnInsertBook.Location = new System.Drawing.Point(0, 0);
+            this.btnInsertBook.Name = "btnInsertBook";
+            this.btnInsertBook.Size = new System.Drawing.Size(340, 57);
+            this.btnInsertBook.TabIndex = 0;
+            this.btnInsertBook.Text = "Внести новую книгу в фонд";
+            this.btnInsertBook.UseVisualStyleBackColor = true;
+            // 
+            // dgvJournal
+            // 
+            this.dgvJournal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvJournal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvJournal.Location = new System.Drawing.Point(3, 3);
+            this.dgvJournal.Name = "dgvJournal";
+            this.dgvJournal.Size = new System.Drawing.Size(1076, 455);
+            this.dgvJournal.TabIndex = 0;
             // 
             // Settings
             // 
@@ -601,55 +689,16 @@
             this.lblRole.TabIndex = 0;
             this.lblRole.Text = "Роль";
             // 
-            // dgvJournal
+            // btnNewFormular
             // 
-            this.dgvJournal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvJournal.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dgvJournal.Location = new System.Drawing.Point(3, 3);
-            this.dgvJournal.Name = "dgvJournal";
-            this.dgvJournal.Size = new System.Drawing.Size(1076, 398);
-            this.dgvJournal.TabIndex = 0;
-            // 
-            // pnManipulation
-            // 
-            this.pnManipulation.Controls.Add(this.btnDeleteBook);
-            this.pnManipulation.Controls.Add(this.btnUpdateBook);
-            this.pnManipulation.Controls.Add(this.btnInsertBook);
-            this.pnManipulation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnManipulation.Location = new System.Drawing.Point(3, 401);
-            this.pnManipulation.Name = "pnManipulation";
-            this.pnManipulation.Size = new System.Drawing.Size(1076, 57);
-            this.pnManipulation.TabIndex = 1;
-            // 
-            // btnInsertBook
-            // 
-            this.btnInsertBook.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnInsertBook.Location = new System.Drawing.Point(0, 0);
-            this.btnInsertBook.Name = "btnInsertBook";
-            this.btnInsertBook.Size = new System.Drawing.Size(340, 57);
-            this.btnInsertBook.TabIndex = 0;
-            this.btnInsertBook.Text = "Внести новую книгу в фонд";
-            this.btnInsertBook.UseVisualStyleBackColor = true;
-            // 
-            // btnUpdateBook
-            // 
-            this.btnUpdateBook.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnUpdateBook.Location = new System.Drawing.Point(340, 0);
-            this.btnUpdateBook.Name = "btnUpdateBook";
-            this.btnUpdateBook.Size = new System.Drawing.Size(364, 57);
-            this.btnUpdateBook.TabIndex = 1;
-            this.btnUpdateBook.Text = "Внести изменения данных о книге";
-            this.btnUpdateBook.UseVisualStyleBackColor = true;
-            // 
-            // btnDeleteBook
-            // 
-            this.btnDeleteBook.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnDeleteBook.Location = new System.Drawing.Point(704, 0);
-            this.btnDeleteBook.Name = "btnDeleteBook";
-            this.btnDeleteBook.Size = new System.Drawing.Size(372, 57);
-            this.btnDeleteBook.TabIndex = 2;
-            this.btnDeleteBook.Text = "Списать экземпляр";
-            this.btnDeleteBook.UseVisualStyleBackColor = true;
+            this.btnNewFormular.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnNewFormular.Location = new System.Drawing.Point(743, 0);
+            this.btnNewFormular.Name = "btnNewFormular";
+            this.btnNewFormular.Size = new System.Drawing.Size(168, 29);
+            this.btnNewFormular.TabIndex = 6;
+            this.btnNewFormular.Text = "Записать нового читателя";
+            this.btnNewFormular.UseVisualStyleBackColor = true;
+            this.btnNewFormular.Click += new System.EventHandler(this.btnNewFormular_Click);
             // 
             // MainWindow
             // 
@@ -662,7 +711,12 @@
             this.Text = "Автобиблио";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.tabControl1.ResumeLayout(false);
+            this.ReadersFormulars.ResumeLayout(false);
+            this.pnManipulationFormular.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFormulars)).EndInit();
             this.BooksJournal.ResumeLayout(false);
+            this.pnManipulationJournal.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvJournal)).EndInit();
             this.Roles.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -677,8 +731,6 @@
             this.gbManipulation.ResumeLayout(false);
             this.gbManipulation.PerformLayout();
             this.pbButtons.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvJournal)).EndInit();
-            this.pnManipulation.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -734,11 +786,15 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Panel pnManipulation;
+        private System.Windows.Forms.Panel pnManipulationJournal;
         private System.Windows.Forms.Button btnDeleteBook;
         private System.Windows.Forms.Button btnUpdateBook;
         private System.Windows.Forms.Button btnInsertBook;
         private System.Windows.Forms.DataGridView dgvJournal;
+        private System.Windows.Forms.DataGridView dgvFormulars;
+        private System.Windows.Forms.Panel pnManipulationFormular;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnNewFormular;
     }
 }
 

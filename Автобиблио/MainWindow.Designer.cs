@@ -32,6 +32,7 @@
             this.IssuedBook = new System.Windows.Forms.TabPage();
             this.ReadersFormulars = new System.Windows.Forms.TabPage();
             this.pnManipulationFormular = new System.Windows.Forms.Panel();
+            this.btnNewFormular = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.dgvFormulars = new System.Windows.Forms.DataGridView();
             this.BooksJournal = new System.Windows.Forms.TabPage();
@@ -85,7 +86,6 @@
             this.lblSurName = new System.Windows.Forms.Label();
             this.cbRole = new System.Windows.Forms.ComboBox();
             this.lblRole = new System.Windows.Forms.Label();
-            this.btnNewFormular = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.ReadersFormulars.SuspendLayout();
             this.pnManipulationFormular.SuspendLayout();
@@ -150,6 +150,17 @@
             this.pnManipulationFormular.Name = "pnManipulationFormular";
             this.pnManipulationFormular.Size = new System.Drawing.Size(1082, 29);
             this.pnManipulationFormular.TabIndex = 4;
+            // 
+            // btnNewFormular
+            // 
+            this.btnNewFormular.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnNewFormular.Location = new System.Drawing.Point(743, 0);
+            this.btnNewFormular.Name = "btnNewFormular";
+            this.btnNewFormular.Size = new System.Drawing.Size(168, 29);
+            this.btnNewFormular.TabIndex = 6;
+            this.btnNewFormular.Text = "Записать нового читателя";
+            this.btnNewFormular.UseVisualStyleBackColor = true;
+            this.btnNewFormular.Click += new System.EventHandler(this.btnNewFormular_Click);
             // 
             // button5
             // 
@@ -689,17 +700,6 @@
             this.lblRole.TabIndex = 0;
             this.lblRole.Text = "Роль";
             // 
-            // btnNewFormular
-            // 
-            this.btnNewFormular.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnNewFormular.Location = new System.Drawing.Point(743, 0);
-            this.btnNewFormular.Name = "btnNewFormular";
-            this.btnNewFormular.Size = new System.Drawing.Size(168, 29);
-            this.btnNewFormular.TabIndex = 6;
-            this.btnNewFormular.Text = "Записать нового читателя";
-            this.btnNewFormular.UseVisualStyleBackColor = true;
-            this.btnNewFormular.Click += new System.EventHandler(this.btnNewFormular_Click);
-            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -710,6 +710,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Автобиблио";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.MainWindow_Load);
             this.tabControl1.ResumeLayout(false);
             this.ReadersFormulars.ResumeLayout(false);
             this.pnManipulationFormular.ResumeLayout(false);

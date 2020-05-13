@@ -6,7 +6,7 @@ namespace Автобиблио
 {
     class DBStoredProcedures
     {
-        private SqlCommand storedProcedure = new SqlCommand("", DBConnection.sqlConnection);
+        private SqlCommand storedProcedure = new SqlCommand("", Registry_Class.sqlConnection);
 
         private void ConfigurationProcedure(string nameProcedure)
         {
@@ -17,8 +17,8 @@ namespace Автобиблио
         {
             try
             {
-                DBConnection.sqlConnection.Open();
-                DBConnection.sqlConnection.InfoMessage += MessageInformation;
+                Registry_Class.sqlConnection.Open();
+                Registry_Class.sqlConnection.InfoMessage += MessageInformation;
                 storedProcedure.ExecuteNonQuery();
                 storedProcedure.Parameters.Clear();
             }
@@ -28,7 +28,7 @@ namespace Автобиблио
             }
             finally
             {
-                DBConnection.sqlConnection.Close();
+                Registry_Class.sqlConnection.Close();
             }
         }
 

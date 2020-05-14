@@ -60,9 +60,11 @@
     <Compile Include="ConnectionForm.Designer.cs">
       <DependentUpon>ConnectionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataSet.cs" />
     <Compile Include="DBConnection.cs" />
     <Compile Include="DBStoredProcedures.cs" />
     <Compile Include="DBTables.cs" />
+    <Compile Include="EnableComponent.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>

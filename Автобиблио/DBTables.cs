@@ -24,8 +24,9 @@ namespace Автобиблио
         public string QRUsers = "SELECT * FROM dbo.Users WHERE User_Logical_Delete = 0";
         public string QRRoles = "SELECT * FROM dbo.Roles WHERE Role_Logical_Delete = 0";
         public string QRRolesForCB = "SELECT ID_Role, Role_Name  FROM dbo.Roles WHERE Role_Logical_Delete = 0";
-        public string QRBookJournal = "SELECT ID_Book, Book_Title, Book_Author, Publisher_ID, Name_Publisher, Year_Publish, Date_Acceptance, Price FROM dbo.Book_Journal " +
-            "INNER JOIN dbo.Publishers ON dbo.Book_Journal.Publisher_ID = dbo.Publishers.ID_Publisher" +
+        public string QRBookJournal = "SELECT ID_Book, Book_Title, Book_Author, Publisher_ID, Name_Publisher," +
+            "Year_Publish, Date_Acceptance, Price FROM dbo.Book_Journal " +
+            "INNER JOIN dbo.Publishers ON dbo.Book_Journal.Publisher_ID = dbo.Publishers.ID_Publisher " +
             "WHERE Book_Logical_Delete = 0";
         public string QRBookJournalForCB = "SELECT ID_Book, Book_Title + ' ' + Book_Author + ' ' + Year_Publish as 'Book' FROM dbo.Book_Journal WHERE Book_Logical_Delete = 0";
         public string QRIssuedBook = "SELECT IB.ID_Issued_Book, IB.Reader_ID, R.SurName + ' ' + R.Name + ' ' + R.Pantronymic as 'Reader', IB.Book_ID," +
@@ -56,7 +57,7 @@ namespace Автобиблио
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.ToString());
             }
             finally
             {

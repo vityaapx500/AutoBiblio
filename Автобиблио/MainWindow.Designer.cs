@@ -40,7 +40,7 @@
             this.btnDeleteBook = new System.Windows.Forms.Button();
             this.btnUpdateBook = new System.Windows.Forms.Button();
             this.btnInsertBook = new System.Windows.Forms.Button();
-            this.dgvJournal = new System.Windows.Forms.DataGridView();
+            this.dgvBookJournal = new System.Windows.Forms.DataGridView();
             this.Settings = new System.Windows.Forms.TabPage();
             this.Roles = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -92,7 +92,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvFormulars)).BeginInit();
             this.BooksJournal.SuspendLayout();
             this.pnManipulationJournal.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvJournal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBookJournal)).BeginInit();
             this.Roles.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRoles)).BeginInit();
@@ -184,7 +184,7 @@
             // BooksJournal
             // 
             this.BooksJournal.Controls.Add(this.pnManipulationJournal);
-            this.BooksJournal.Controls.Add(this.dgvJournal);
+            this.BooksJournal.Controls.Add(this.dgvBookJournal);
             this.BooksJournal.Location = new System.Drawing.Point(4, 22);
             this.BooksJournal.Name = "BooksJournal";
             this.BooksJournal.Padding = new System.Windows.Forms.Padding(3);
@@ -234,14 +234,14 @@
             this.btnInsertBook.Text = "Внести новую книгу в фонд";
             this.btnInsertBook.UseVisualStyleBackColor = true;
             // 
-            // dgvJournal
+            // dgvBookJournal
             // 
-            this.dgvJournal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvJournal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvJournal.Location = new System.Drawing.Point(3, 3);
-            this.dgvJournal.Name = "dgvJournal";
-            this.dgvJournal.Size = new System.Drawing.Size(1076, 455);
-            this.dgvJournal.TabIndex = 0;
+            this.dgvBookJournal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBookJournal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvBookJournal.Location = new System.Drawing.Point(3, 3);
+            this.dgvBookJournal.Name = "dgvBookJournal";
+            this.dgvBookJournal.Size = new System.Drawing.Size(1076, 455);
+            this.dgvBookJournal.TabIndex = 0;
             // 
             // Settings
             // 
@@ -717,7 +717,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvFormulars)).EndInit();
             this.BooksJournal.ResumeLayout(false);
             this.pnManipulationJournal.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvJournal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBookJournal)).EndInit();
             this.Roles.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -745,7 +745,6 @@
         private System.Windows.Forms.TabPage Settings;
         private System.Windows.Forms.TabPage Roles;
         private System.Windows.Forms.TabPage Userss;
-        private System.Windows.Forms.DataGridView dgvUsers;
         private System.Windows.Forms.GroupBox pnSearch;
         private System.Windows.Forms.Button btnFiltration;
         private System.Windows.Forms.TextBox tbSearch;
@@ -791,11 +790,12 @@
         private System.Windows.Forms.Button btnDeleteBook;
         private System.Windows.Forms.Button btnUpdateBook;
         private System.Windows.Forms.Button btnInsertBook;
-        private System.Windows.Forms.DataGridView dgvJournal;
-        private System.Windows.Forms.DataGridView dgvFormulars;
         private System.Windows.Forms.Panel pnManipulationFormular;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button btnNewFormular;
+        public System.Windows.Forms.DataGridView dgvBookJournal;
+        public System.Windows.Forms.DataGridView dgvUsers;
+        public System.Windows.Forms.DataGridView dgvFormulars;
     }
 }
 

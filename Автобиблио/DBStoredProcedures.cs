@@ -125,11 +125,10 @@ namespace Автобиблио
             ExecuteStoredProcedure();
         }
         //Процедуры для таблицы Журнал фонда
-        public void SPBooksJournalInsert(string CodeBook, string BookTitle, string BookAuthor, Int32 PublisherID, Int32 YearPublish, Int32 DateAcceptance, Int32 Price) //Добавление книги
+        public void SPBooksJournalInsert(string BookTitle, string BookAuthor, Int32 PublisherID, Int32 YearPublish, string DateAcceptance, Int32 Price) //Добавление книги
         {
             ConfigurationProcedure("Journal_Insert");
 
-            storedProcedure.Parameters.AddWithValue("@Code_Book", CodeBook);
             storedProcedure.Parameters.AddWithValue("@Book_Title", BookTitle);
             storedProcedure.Parameters.AddWithValue("@Book_Author", BookAuthor);
             storedProcedure.Parameters.AddWithValue("@Publisher_ID", PublisherID);
@@ -140,12 +139,11 @@ namespace Автобиблио
             ExecuteStoredProcedure();
         }
 
-        public void SPBooksJournalUpdate(Int32 IDBook, string CodeBook, string BookTitle, string BookAuthor, Int32 PublisherID, Int32 YearPublish, Int32 DateAcceptance, Int32 Price) //Обновление данных о книги
+        public void SPBooksJournalUpdate(Int32 IDBook, string BookTitle, string BookAuthor, Int32 PublisherID, Int32 YearPublish, string DateAcceptance, Int32 Price) //Обновление данных о книги
         {
             ConfigurationProcedure("Journal_Update");
 
             storedProcedure.Parameters.AddWithValue("@ID_User", IDBook);
-            storedProcedure.Parameters.AddWithValue("@Code_Book", CodeBook);
             storedProcedure.Parameters.AddWithValue("@Book_Title", BookTitle);
             storedProcedure.Parameters.AddWithValue("@Book_Author", BookAuthor);
             storedProcedure.Parameters.AddWithValue("@Publisher_ID", PublisherID);
@@ -211,7 +209,7 @@ namespace Автобиблио
             ExecuteStoredProcedure();
         }
         //Процедуры для таблицы Выданная книга
-        public void SPIssuedBookInsert(Int32 ReaderID, Int32 BookID, Int32 DateIssued, Int32 DateReturned, Int32 Returned) //Добавление выданной книги
+        public void SPIssuedBookInsert(Int32 ReaderID, Int32 BookID, string DateIssued, string DateReturned, Int32 Returned) //Добавление выданной книги
         {
             ConfigurationProcedure("Issued_Book_Insert");
 
@@ -224,7 +222,7 @@ namespace Автобиблио
             ExecuteStoredProcedure();
         }
 
-        public void SPIssuedBookUpdate(Int32 IDIssuedBook, Int32 ReaderID, Int32 BookID, Int32 DateIssued, Int32 DateReturned, Int32 Returned) //Обновление данных о выданной книге
+        public void SPIssuedBookUpdate(Int32 IDIssuedBook, Int32 ReaderID, Int32 BookID, string DateIssued, Int32 DateReturned, Int32 Returned) //Обновление данных о выданной книге
         {
             ConfigurationProcedure("Issued_Book_Update");
 
@@ -256,7 +254,7 @@ namespace Автобиблио
             ExecuteStoredProcedure();
         }
         //Процедуры для таблицы Формуляр
-        public void SPReaderFormularInsert(Int32 Creation_Date, string Phone_Num, string Home_Address, Int32 IssuedBookID) //Добавление пользователя
+        public void SPReaderFormularInsert(string Creation_Date, string Phone_Num, string Home_Address, Int32 IssuedBookID) //Добавление пользователя
         {
             ConfigurationProcedure("Formular_Insert");
 
@@ -268,7 +266,7 @@ namespace Автобиблио
             ExecuteStoredProcedure();
         }
 
-        public void SPReaderFormularUpdate(Int32 IDFormular, Int32 Creation_Date, string Phone_Num, string Home_Address, Int32 IssuedBookID) //Обновление данных о пользователе
+        public void SPReaderFormularUpdate(Int32 IDFormular, string Creation_Date, string Phone_Num, string Home_Address, Int32 IssuedBookID) //Обновление данных о пользователе
         {
             ConfigurationProcedure("Formular_Update");
 

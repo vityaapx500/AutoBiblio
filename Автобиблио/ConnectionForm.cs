@@ -36,9 +36,11 @@ namespace Автобиблио
                     lbsstStatus.Text = "Поиск сервера";
                     dBConnection.dtServers += DTServer;
                     threadGetServers = new Thread(dBConnection.GetServers);
-                    threadMessage = new Thread(StatusStripMessage);
-                    threadMessage.Priority = ThreadPriority.Lowest;
-                    threadMessage.IsBackground = true;
+                    threadMessage = new Thread(StatusStripMessage)
+                    {
+                        Priority = ThreadPriority.Lowest,
+                        IsBackground = true
+                    };
                     threadMessage.Start();
                     threadGetServers.Start();
                     break;

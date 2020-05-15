@@ -97,6 +97,15 @@ namespace Автобиблио {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Списать книгу.
+        /// </summary>
+        internal static string QuestionDeleteBook {
+            get {
+                return ResourceManager.GetString("QuestionDeleteBook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Поиск серверов.
         /// </summary>
         internal static string ServerSearch {

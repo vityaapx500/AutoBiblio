@@ -117,28 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AllMargin" xml:space="preserve">
-    <value>Все поля должны быть заполнены!</value>
-  </data>
-  <data name="DatabaseSearch" xml:space="preserve">
-    <value>Поиск баз данных</value>
-  </data>
-  <data name="DatabaseSearchTochki" xml:space="preserve">
-    <value>Поиск баз данных...</value>
-  </data>
-  <data name="NoConnection" xml:space="preserve">
-    <value>Подключение отсутствует!</value>
-  </data>
-  <data name="QuestionDeleteBook" xml:space="preserve">
-    <value>Списать книгу</value>
-  </data>
-  <data name="ServerSearch" xml:space="preserve">
-    <value>Поиск серверов</value>
-  </data>
-  <data name="ServerSearchTochki" xml:space="preserve">
-    <value>Поиск серверов...</value>
-  </data>
-  <data name="TitleApp" xml:space="preserve">
-    <value>Автобиблио</value>
-  </data>
 </root>

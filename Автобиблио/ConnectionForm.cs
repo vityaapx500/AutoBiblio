@@ -156,8 +156,8 @@ namespace Автобиблио
                 Registry_Class registryData = new Registry_Class();
                 registryData.SetRegistry(cbAddressServer.Text, cbNameServer.Text, cbListDataBase.Text, tbUserServer.Text, tbPasswordServer.Text);
                 DBConnection.LogConnection = true;
-                //AuthorizationForm authorizationForm = new AuthorizationForm();
-                //authorizationForm.ShowDialog();
+                AuthorizationForm authorizationForm = new AuthorizationForm();
+                authorizationForm.ShowDialog();
                 Close();
             }
         }

@@ -17,17 +17,11 @@ namespace Автобиблио
         {
             InitializeComponent();
         }
-
         private void MainWindow_Load(object sender, EventArgs e)
         {
-            dbConnection.ConnectionState += InformationConnection;
-            threadConnection = new Thread(dbConnection.CheckConnection);
-            threadConnection.Start();
-        }
-        private void btnNewFormular_Click(object sender, EventArgs e)
-        {
-            //ReadersFormular RF = new ReadersFormular();
-            //RF.Show();
+            //dbConnection.ConnectionState += InformationConnection;
+            //threadConnection = new Thread(dbConnection.CheckConnection);
+            //threadConnection.Start();
             Thread threadBookJournal = new Thread(BookJournalFill);
             threadBookJournal.Start();
             Thread threadUsers = new Thread(UsersFill);
@@ -35,6 +29,12 @@ namespace Автобиблио
             Thread threadPublishers = new Thread(PublishersFill);
             threadPublishers.Start();
             tbDateAcceptance.Text = today.ToString();
+        }
+        private void btnNewFormular_Click(object sender, EventArgs e)
+        {
+            ReadersFormular RF = new ReadersFormular();
+            RF.Show();
+
         }
         private void InformationConnection(bool value)  //проверка подключения к базе данных
         {
@@ -46,8 +46,8 @@ namespace Автобиблио
                     {
                         case (true):
                             //lbsstConnection.Text = Registry_Class.DataSource + "\\" + Registry_Class.DSServerName + " - " + Registry_Class.InitialCatalog;
-                            //AuthorizationForm authorizationForm = new AuthorizationForm();
-                            //authorizationForm.Show();
+                            AuthorizationForm authorizationForm = new AuthorizationForm();
+                            authorizationForm.Show();
                             break;
                         case (false):
                             //lbsstConnection.Text = MessageUser.NoConnection;
@@ -196,14 +196,14 @@ namespace Автобиблио
             switch (MessageBox.Show(MessageUser.QuestionDeleteBook + " " + tbBookTitle.Text + "?", "Списание книги", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
             {
                 case DialogResult.Yes:
-                    //if (AuthorizationForm.userRole == 1)
-                    //{
+                    if (AuthorizationForm.userRole == 1)
+                    {
                         storedProcedures.SPBooksJournalDelete(Convert.ToInt32(dgvBookJournal.CurrentRow.Cells[0].Value.ToString()));
-                    //}
-                    //else
-                    //{
-                    //    storedProcedures.SPUBooksJournalLogicalDelete(Convert.ToInt32(dgvBookJournal.CurrentRow.Cells[0].Value.ToString()));
-                    //}
+                    }
+                    else
+                    {
+                        storedProcedures.SPUBooksJournalLogicalDelete(Convert.ToInt32(dgvBookJournal.CurrentRow.Cells[0].Value.ToString()));
+                    }
                     tbBookTitle.Clear();
                     tbBookAuthor.Clear();
                     cbPublisher.SelectedIndex = -1;

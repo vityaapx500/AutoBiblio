@@ -78,11 +78,12 @@ namespace Автобиблио
             ExecuteStoredProcedure();
         }
         //Процедуры для таблицы Пользователи
-        public void SPUsersInsert(Int32 UserRoleID, string SurName, string Name, string Pantronymic, string UserLogin, string UserPassword) //Добавление пользователя
+        public void SPUsersInsert(Int32 UserRoleID, Int32 OfficeID, string SurName, string Name, string Pantronymic, string UserLogin, string UserPassword) //Добавление пользователя
         {
             ConfigurationProcedure("Users_Insert");
 
             storedProcedure.Parameters.AddWithValue("@User_Role_ID", UserRoleID);
+            storedProcedure.Parameters.AddWithValue("@Office_ID", OfficeID);
             storedProcedure.Parameters.AddWithValue("@SurName", SurName);
             storedProcedure.Parameters.AddWithValue("@Name", Name);
             storedProcedure.Parameters.AddWithValue("@Pantronymic", Pantronymic);
@@ -92,12 +93,13 @@ namespace Автобиблио
             ExecuteStoredProcedure();
         }
 
-        public void SPUsersUpdate(Int32 IDUser, Int32 UserRoleID, string SurName, string Name, string Pantronymic, string UserLogin, string UserPassword) //Обновление данных о пользователе
+        public void SPUsersUpdate(Int32 IDUser, Int32 UserRoleID, Int32 OfficeID, string SurName, string Name, string Pantronymic, string UserLogin, string UserPassword) //Обновление данных о пользователе
         {
             ConfigurationProcedure("Users_Update");
 
             storedProcedure.Parameters.AddWithValue("@ID_User", IDUser);
             storedProcedure.Parameters.AddWithValue("@User_Role_ID", UserRoleID);
+            storedProcedure.Parameters.AddWithValue("@Office_ID", OfficeID);
             storedProcedure.Parameters.AddWithValue("@SurName", SurName);
             storedProcedure.Parameters.AddWithValue("@Name", Name);
             storedProcedure.Parameters.AddWithValue("@Pantronymic", Pantronymic);
@@ -125,7 +127,7 @@ namespace Автобиблио
             ExecuteStoredProcedure();
         }
         //Процедуры для таблицы Журнал фонда
-        public void SPBooksJournalInsert(string BookTitle, string BookAuthor, Int32 PublisherID, Int32 YearPublish, string DateAcceptance, Int32 Price) //Добавление книги
+        public void SPBooksJournalInsert(string BookTitle, string BookAuthor, Int32 PublisherID, Int32 YearPublish, string DateAcceptance, Int32 OfficeID, Int32 Price) //Добавление книги
         {
             ConfigurationProcedure("Journal_Insert");
 
@@ -134,12 +136,13 @@ namespace Автобиблио
             storedProcedure.Parameters.AddWithValue("@Publisher_ID", PublisherID);
             storedProcedure.Parameters.AddWithValue("@Year_Publish", YearPublish);
             storedProcedure.Parameters.AddWithValue("@Date_Acceptance", DateAcceptance);
+            storedProcedure.Parameters.AddWithValue("@Office_ID", OfficeID);
             storedProcedure.Parameters.AddWithValue("@Price", Price);
 
             ExecuteStoredProcedure();
         }
 
-        public void SPBooksJournalUpdate(Int32 IDBook, string BookTitle, string BookAuthor, Int32 PublisherID, Int32 YearPublish, string DateAcceptance, Int32 Price) //Обновление данных о книги
+        public void SPBooksJournalUpdate(Int32 IDBook, string BookTitle, string BookAuthor, Int32 PublisherID, Int32 YearPublish, string DateAcceptance, Int32 OfficeID, Int32 Price) //Обновление данных о книги
         {
             ConfigurationProcedure("Journal_Update");
 
@@ -149,6 +152,7 @@ namespace Автобиблио
             storedProcedure.Parameters.AddWithValue("@Publisher_ID", PublisherID);
             storedProcedure.Parameters.AddWithValue("@Year_Publish", YearPublish);
             storedProcedure.Parameters.AddWithValue("@Date_Acceptance", DateAcceptance);
+            storedProcedure.Parameters.AddWithValue("@Office_ID", OfficeID);
             storedProcedure.Parameters.AddWithValue("@Price", Price);
 
             ExecuteStoredProcedure();

@@ -48,10 +48,11 @@ namespace Автобиблио
                     userRole = Convert.ToInt32(commandRoleUser.ExecuteScalar().ToString());
                     Registry_Class.sqlConnection.Close();
                     MessageBox.Show("Вы авторизовались в информационной системе.", "СОШ №654", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Hide();
-                    MainWindow MW = new MainWindow();
-                    //MW.Show();
-                    MW.Enabled = true;
+                    Hide();
+                    LogoForm logoForm = new LogoForm();
+                    MainWindow mainWindow = new MainWindow();
+                    logoForm.Close();
+                    mainWindow.Show();
                 }
             }
         }
@@ -86,5 +87,9 @@ namespace Автобиблио
             }
         }
 
+        private void AuthorizationForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
+        }
     }
 }

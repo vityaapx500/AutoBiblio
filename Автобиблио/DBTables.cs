@@ -15,6 +15,7 @@ namespace Автобиблио
         public DataTable DTRoles = new DataTable("Roles");
         public DataTable DTUsers = new DataTable("Users");
         public DataTable DTReaders = new DataTable("Readers");
+        public DataTable DTOffices = new DataTable("Offices");
         public SqlDependency dependency = new SqlDependency();
 
         public string QRReaders = "SELECT * FROM dbo.Readers WHERE Reader_Logical_Delete = 0";
@@ -24,12 +25,13 @@ namespace Автобиблио
         public string QRUsers = "SELECT * FROM dbo.Users WHERE User_Logical_Delete = 0";
         public string QRRoles = "SELECT * FROM dbo.Roles WHERE Role_Logical_Delete = 0";
         public string QRRolesForCB = "SELECT ID_Role, Role_Name  FROM dbo.Roles WHERE Role_Logical_Delete = 0";
-        public string QRBookJournal = "SELECT ID_Book, Book_Title, Book_Author, Publisher_ID, Name_Publisher," +
-            "Year_Publish, Date_Acceptance, Price FROM dbo.Book_Journal " +
-            "INNER JOIN dbo.Publishers ON dbo.Book_Journal.Publisher_ID = dbo.Publishers.ID_Publisher " +
+        public string QRBookJournal = "SELECT BJ.ID_Book, BJ.Book_Title, BJ.Book_Author, BJ.Publisher_ID, P.Name_Publisher, " +
+            "BJ.Year_Publish, BJ.Date_Acceptance, BJ.Office_ID, O.Office_Address, Price FROM dbo.Book_Journal AS BJ " +
+            "INNER JOIN dbo.Publishers AS P ON BJ.Publisher_ID = P.ID_Publisher " +
+            "INNER JOIN dbo.Offices AS O ON BJ.Office_ID = O.ID_Office " +
             "WHERE Book_Logical_Delete = 0";
-        public string QRBookJournalForCB = "SELECT ID_Book, Book_Title + ' ' + Book_Author + ' ' + Year_Publish as 'Book' FROM dbo.Book_Journal WHERE Book_Logical_Delete = 0";
-        public string QRIssuedBook = "SELECT IB.ID_Issued_Book, IB.Reader_ID, R.SurName + ' ' + R.Name + ' ' + R.Pantronymic as 'Reader', IB.Book_ID," +
+        public string QRBookJournalForCB = "SELECT ID_Book, Book_Title + ' ' + Book_Author + ' ' + Year_Publish AS 'Book' FROM dbo.Book_Journal WHERE Book_Logical_Delete = 0";
+        public string QRIssuedBook = "SELECT IB.ID_Issued_Book, IB.Reader_ID, R.SurName + ' ' + R.Name + ' ' + R.Pantronymic AS 'Reader', IB.Book_ID," +
             "BJ.Book_Title + ' ' + BJ.Book_Author + ' ' + BJ.Year_Publish as 'Book', IB.Date_Issued, IB.Date_Returned, IB.Returned FROM dbo.Issued_Book AS IB" +
             "INNER JOIN dbo.Readers AS R ON IB..Reader_ID = R.ID_Reader" +
             "INNER JOIN dbo.Book_Journal AS BJ ON IB.Book_ID = BJ.ID_Book";
@@ -42,6 +44,8 @@ namespace Автобиблио
             "INNER JOIN dbo.Book_Journal AS BJ ON IB.Book_ID = BJ.ID_Book" +
             "INNER JOIN dbo.Publishers AS P ON BJ.Publisher_ID = P.ID_Publisher" +
             "WHERE Formular_Logical_Delete = 0";
+        public string QROffice = "SELECT * FROM dbo.Offices WHERE Office_Logical_Delete = 0";
+        public string QROfficeforCB = "SELECT ID_Office, Office_Address FROM dbo.Offices WHERE Office_Logical_Delete = 0";
 
         private void DataTableFill(DataTable table, string query)
         {
@@ -112,6 +116,14 @@ namespace Автобиблио
         public void DTReaderFormularFIll()
         {
             DataTableFill(DTReaderFormular, QRReaderFormular);
+        }
+        public void DTOfficeFill()
+        {
+            DataTableFill(DTOffices, QROffice);
+        }
+        public void DTCBOfficeFill()
+        {
+            DataTableFill(DTOffices, QROfficeforCB);
         }
     }
 }

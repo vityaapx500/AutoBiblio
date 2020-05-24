@@ -19,15 +19,12 @@ namespace Автобиблио
         }
         private void MainWindow_Load(object sender, EventArgs e)
         {
-            //dbConnection.ConnectionState += InformationConnection;
-            //threadConnection = new Thread(dbConnection.CheckConnection);
-            //threadConnection.Start();
-            Thread threadBookJournal = new Thread(BookJournalFill);
-            threadBookJournal.Start();
-            Thread threadUsers = new Thread(UsersFill);
-            threadUsers.Start();
-            Thread threadPublishers = new Thread(PublishersFill);
-            threadPublishers.Start();
+            Thread threadBookJournalFill = new Thread(BookJournalFill);
+            threadBookJournalFill.Start();
+            Thread threadPublishersFill = new Thread(PublishersFill);
+            threadPublishersFill.Start();
+            Thread threadOfficeFill = new Thread(OfficesFill);
+            threadOfficeFill.Start();
             tbDateAcceptance.Text = today.ToString();
         }
         private void btnNewFormular_Click(object sender, EventArgs e)
@@ -70,9 +67,8 @@ namespace Автобиблио
                 threadConnection.Abort();
             }
         }
-        private void BookJournalFill()
+        private void BookJournalFill() //Заполнение DataGrid данными из БД
         {
-            MainWindow MW = new MainWindow();
             DBTables dBTables = new DBTables();
             Action action = () =>
             {
@@ -106,41 +102,7 @@ namespace Автобиблио
             if (e.Info != SqlNotificationInfo.Invalid)
                 BookJournalFill();
         }
-        private void UsersFill()
-        {
-            MainWindow MW = new MainWindow();
-            DBTables dbTables = new DBTables();
-            Action action = () =>
-            {
-                try
-                {
-                    dbTables.DTUsers.Clear();
-                    dbTables.DTUsersFill();
-                    dbTables.dependency.OnChange += ChangeUser;
-
-                    dgvUsers.DataSource = dbTables.DTUsers;
-                    dgvUsers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                    dgvUsers.Columns[0].HeaderText = "Роль";
-                    dgvUsers.Columns[1].HeaderText = "Фамилия пользователя";
-                    dgvUsers.Columns[2].HeaderText = "Имя пользователя";
-                    dgvUsers.Columns[3].HeaderText = "Отчество пользователя";
-                    dgvUsers.Columns[4].HeaderText = "Логин";
-                    dgvUsers.Columns[5].HeaderText = "Пароль";
-
-                    dgvUsers.ClearSelection();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            };
-            Invoke(action);
-        }
-        private void ChangeUser(object sender, SqlNotificationEventArgs e)
-        {
-            if (e.Info != SqlNotificationInfo.Invalid)
-                UsersFill();
-        }
+        
         private void PublishersFill()   //заполнение combo box данными из базы данных
         {
             DBTables dbTables = new DBTables();
@@ -170,28 +132,57 @@ namespace Автобиблио
             if (e.Info != SqlNotificationInfo.Invalid)
                 PublishersFill();
         }
+        private void OfficesFill()   //заполнение combo box данными из базы данных
+        {
+            DBTables dbTables = new DBTables();
 
-        private void btnInsertBook_Click(object sender, EventArgs e)
+            Action action = () =>
+            {
+                try
+                {
+                    dbTables.DTOffices.Clear();
+                    dbTables.DTCBOfficeFill();
+                    dbTables.dependency.OnChange += ChangeOffices;
+
+                    cbOffice.DataSource = dbTables.DTOffices;
+                    cbOffice.ValueMember = "ID_Office";
+                    cbOffice.DisplayMember = "Office_Address";
+                    cbOffice.SelectedValue = -1;
+                }
+                catch
+                {
+                    MessageBox.Show("Ошибка заполнения списка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            };
+            Invoke(action);
+        }
+        private void ChangeOffices(object sender, SqlNotificationEventArgs e)
+        {
+            if (e.Info != SqlNotificationInfo.Invalid)
+                OfficesFill();
+        }
+        private void btnInsertBook_Click(object sender, EventArgs e) //Кнопка Внесение книги в фодн
         {
             try
             {
                 storedProcedures.SPBooksJournalInsert(tbBookTitle.Text, tbBookAuthor.Text, Convert.ToInt32(cbPublisher.SelectedValue.ToString()),
-                    Convert.ToInt32(tbYearPublish.Text), today, Convert.ToInt32(tbPrice.Text));
+                    Convert.ToInt32(tbYearPublish.Text), today, Convert.ToInt32(cbOffice.SelectedValue.ToString()), Convert.ToInt32(tbPrice.Text));
             }
             catch
             {
                 Registry_Class.error_message += "\n" + DateTime.Now.ToLongDateString() + "Проверьте правильность ввода данных!";
             }
 
-            //tbBookTitle.Clear();
-            //tbBookAuthor.Clear();
-            //cbPublisher.SelectedIndex = -1;
-            //tbYearPublish.Clear();
-            //tbPrice.Clear();
-            //tbDateAcceptance.Clear();
-            //tbPrice.Clear();
+            tbBookTitle.Clear();
+            tbBookAuthor.Clear();
+            cbPublisher.SelectedIndex = -1;
+            tbYearPublish.Clear();
+            cbOffice.SelectedIndex = -1;
+            tbPrice.Clear();
+            tbDateAcceptance.Clear();
+            tbPrice.Clear();
         }
-        private void btnDelete_Click(object sender, EventArgs e)    //кнопка удаления записи
+        private void btnDelete_Click(object sender, EventArgs e)    //кнопка Списания книги
         {
             switch (MessageBox.Show(MessageUser.QuestionDeleteBook + " " + tbBookTitle.Text + "?", "Списание книги", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
             {
@@ -213,6 +204,16 @@ namespace Автобиблио
                     tbPrice.Clear();
                     break;
             }
+        }
+
+        private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //DialogResult dialogResult = (MessageBox.Show("Вы действительно хотите выйти?", "Выход из системы", MessageBoxButtons.YesNo, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button2));
+            //if (dialogResult == DialogResult.Yes)
+            //{
+            //    Application.Exit();
+            //    //if (DialogResult == DialogResult.No) 
+            //}
         }
     }
 }

@@ -86,16 +86,16 @@ namespace Автобиблио
                         switch (status)
                         {
                             case (1):
-                                if (lbsstStatus.Text != MessageUser.ServerSearchTochki)
+                                if (lbsstStatus.Text != "Поиск серверов...")
                                     lbsstStatus.Text += ".";
                                 else
-                                    lbsstStatus.Text = MessageUser.ServerSearch;
+                                    lbsstStatus.Text = "Поиск серверов";
                                 break;
                             case (2):
-                                if (lbsstStatus.Text != MessageUser.DatabaseSearchTochki)
+                                if (lbsstStatus.Text != "Подкючение к базе данных...")
                                     lbsstStatus.Text += ".";
                                 else
-                                    lbsstStatus.Text = MessageUser.DatabaseSearch;
+                                    lbsstStatus.Text = "Подкючение к базе данных";
                                 break;
                             case (0):
                                 lbsstStatus.Text = "-";

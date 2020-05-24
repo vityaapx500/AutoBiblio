@@ -19,21 +19,22 @@ namespace Автобиблио
         {
             AllowTransparency = true;
             TransparencyKey = Color.Black;
-            dbConnection.ConnectionState += InformationConnection;
-            threadConnection = new Thread(dbConnection.CheckConnection);
-            threadConnection.Start();
-
+            //dbConnection.ConnectionState += InformationConnection;
+            //threadConnection = new Thread(dbConnection.CheckConnection);
+            //threadConnection.Start();
         }
-        private void tmLogo_Tick(object sender, EventArgs e)
+       private void tmLogo_Tick(object sender, EventArgs e)
         {
-            if (Opacity != 1) Opacity += 0.01;
+            if (Opacity != 0) Opacity -= 0.07;
             else
             {
                 tmLogo.Enabled = false;
-                mainWindow.Show();
-                Hide();
+                dbConnection.ConnectionState += InformationConnection;
+                threadConnection = new Thread(dbConnection.CheckConnection);
+                threadConnection.Start();
             }
         }
+
         private void InformationConnection(bool value)  //проверка подключения к базе данных
         {
             try

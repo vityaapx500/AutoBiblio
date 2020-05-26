@@ -11,7 +11,7 @@ namespace Автобиблио
         private DBStoredProcedures storedProcedures = new DBStoredProcedures();
         private Thread threadConnection;
         private static DateTime dateToday = DateTime.Now;
-        private string today = dateToday.Date.ToString("dd-MM--yyyy");
+        public string today = dateToday.Date.ToString("dd-MM--yyyy");
                     
         public MainWindow()
         {
@@ -25,11 +25,14 @@ namespace Автобиблио
             threadPublishersFill.Start();
             Thread threadOfficeFill = new Thread(OfficesFill);
             threadOfficeFill.Start();
-            tbDateAcceptance.Text = today.ToString();
+            Thread threadFormularsFill = new Thread(ReadersFormularsFill);
+            threadFormularsFill.Start();
+            tbDateAcceptance.Text = today;
+            
         }
         private void btnNewFormular_Click(object sender, EventArgs e)
         {
-            ReadersFormular RF = new ReadersFormular();
+            ReadersFormularForm RF = new ReadersFormularForm();
             RF.Show();
 
         }
@@ -67,6 +70,7 @@ namespace Автобиблио
                 threadConnection.Abort();
             }
         }
+        //Окно Журнал фонда. НАЧАЛО
         private void BookJournalFill() //Заполнение DataGrid данными из БД
         {
             DBTables dBTables = new DBTables();
@@ -205,15 +209,56 @@ namespace Автобиблио
                     break;
             }
         }
+        //Окно Журнал фона. КОНЕЦ.
+        private void btnInsertNewReader_Click(object sender, EventArgs e)
+        {
+            InsertNewReaderForm insertNewReaderForm = new InsertNewReaderForm();
+            insertNewReaderForm.Show();
+        }
+        //Окно Формуляры читателей. НАЧАЛО
+        private void ReadersFormularsFill() //Заполнение DataGrid данными из БД
+        {
+            DBTables dBTables = new DBTables();
+            Action action = () =>
+            {
+                try
+                {
+                    dBTables.DTReaderFormular.Clear();
+                    dBTables.DTReaderFormularFIll();
+                    dBTables.dependency.OnChange += ChangeReadersFormulars;
 
+                    dgvFormulars.DataSource = dBTables.DTReaderFormular;
+                    dgvFormulars.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    dgvFormulars.Columns[0].HeaderText = "№ п/п";
+                    dgvFormulars.Columns[1].HeaderText = "Дата создания";
+                    dgvFormulars.Columns[2].Visible = false;
+                    dgvFormulars.Columns[3].HeaderText = "ФИО читателя";
+                    dgvFormulars.Columns[4].HeaderText = "Номер телефона";
+                    dgvFormulars.Columns[5].HeaderText = "Домашний адрес";
+                    dgvFormulars.ClearSelection();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            };
+            Invoke(action);
+        }
+        private void ChangeReadersFormulars(object sender, SqlNotificationEventArgs e)
+        {
+            if (e.Info != SqlNotificationInfo.Invalid)
+                BookJournalFill();
+        }
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //DialogResult dialogResult = (MessageBox.Show("Вы действительно хотите выйти?", "Выход из системы", MessageBoxButtons.YesNo, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button2));
-            //if (dialogResult == DialogResult.Yes)
-            //{
-            //    Application.Exit();
-            //    //if (DialogResult == DialogResult.No) 
-            //}
+            DialogResult dialogResult = (MessageBox.Show("Вы действительно хотите выйти?", "Выход из системы", MessageBoxButtons.YesNo, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button2));
+            if (dialogResult == DialogResult.Yes)
+            {
+                Application.Exit();
+                //LogoForm logoForm = new LogoForm();
+                //logoForm.LogoForm_FormClosing(sender, e);
+            }
+            else e.Cancel = true;
         }
     }
 }

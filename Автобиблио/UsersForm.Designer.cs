@@ -1,6 +1,6 @@
 ﻿namespace Автобиблио
 {
-    partial class Users
+    partial class UsersForm
     {
         /// <summary>
         /// Required designer variable.

@@ -1,6 +1,6 @@
 ﻿namespace Автобиблио
 {
-    partial class ReadersFormular
+    partial class ReadersFormularForm
     {
         /// <summary>
         /// Required designer variable.
@@ -39,6 +39,7 @@
             this.btnGive = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnReturn = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIssuesBooks)).BeginInit();
@@ -49,9 +50,9 @@
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox1.Location = new System.Drawing.Point(16, 15);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(183, 169);
+            this.pictureBox1.Size = new System.Drawing.Size(218, 218);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -59,7 +60,7 @@
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Microsoft YaHei", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblTitle.Location = new System.Drawing.Point(151, 9);
+            this.lblTitle.Location = new System.Drawing.Point(146, 0);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(384, 48);
@@ -71,7 +72,7 @@
             // 
             this.lblNum.AutoSize = true;
             this.lblNum.Font = new System.Drawing.Font("Microsoft YaHei", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblNum.Location = new System.Drawing.Point(28, 50);
+            this.lblNum.Location = new System.Drawing.Point(24, 101);
             this.lblNum.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNum.Name = "lblNum";
             this.lblNum.Size = new System.Drawing.Size(48, 35);
@@ -83,7 +84,7 @@
             // 
             this.lblDateCreation.AutoSize = true;
             this.lblDateCreation.Font = new System.Drawing.Font("Microsoft YaHei", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblDateCreation.Location = new System.Drawing.Point(309, 57);
+            this.lblDateCreation.Location = new System.Drawing.Point(305, 106);
             this.lblDateCreation.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDateCreation.Name = "lblDateCreation";
             this.lblDateCreation.Size = new System.Drawing.Size(198, 31);
@@ -94,22 +95,23 @@
             // pnTitle
             // 
             this.pnTitle.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnTitle.Controls.Add(this.label3);
             this.pnTitle.Controls.Add(this.label1);
             this.pnTitle.Controls.Add(this.label2);
             this.pnTitle.Controls.Add(this.lblTitle);
             this.pnTitle.Controls.Add(this.lblDateCreation);
             this.pnTitle.Controls.Add(this.lblNum);
-            this.pnTitle.Location = new System.Drawing.Point(208, 15);
-            this.pnTitle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnTitle.Location = new System.Drawing.Point(245, 15);
+            this.pnTitle.Margin = new System.Windows.Forms.Padding(4);
             this.pnTitle.Name = "pnTitle";
-            this.pnTitle.Size = new System.Drawing.Size(687, 169);
+            this.pnTitle.Size = new System.Drawing.Size(691, 218);
             this.pnTitle.TabIndex = 4;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft YaHei", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(28, 134);
+            this.label1.Location = new System.Drawing.Point(24, 185);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(232, 31);
@@ -121,7 +123,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft YaHei", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(28, 87);
+            this.label2.Location = new System.Drawing.Point(24, 143);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(229, 31);
@@ -132,10 +134,10 @@
             // dgvIssuesBooks
             // 
             this.dgvIssuesBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvIssuesBooks.Location = new System.Drawing.Point(16, 192);
-            this.dgvIssuesBooks.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvIssuesBooks.Location = new System.Drawing.Point(4, 241);
+            this.dgvIssuesBooks.Margin = new System.Windows.Forms.Padding(4);
             this.dgvIssuesBooks.Name = "dgvIssuesBooks";
-            this.dgvIssuesBooks.Size = new System.Drawing.Size(880, 299);
+            this.dgvIssuesBooks.Size = new System.Drawing.Size(932, 299);
             this.dgvIssuesBooks.TabIndex = 5;
             // 
             // btnGive
@@ -144,44 +146,57 @@
             this.btnGive.Enabled = false;
             this.btnGive.Location = new System.Drawing.Point(0, 0);
             this.btnGive.Name = "btnGive";
-            this.btnGive.Size = new System.Drawing.Size(451, 40);
+            this.btnGive.Size = new System.Drawing.Size(468, 40);
             this.btnGive.TabIndex = 6;
             this.btnGive.Text = "Выдать книгу";
             this.btnGive.UseVisualStyleBackColor = true;
+            this.btnGive.Click += new System.EventHandler(this.btnGive_Click);
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.btnReturn);
             this.panel1.Controls.Add(this.btnGive);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 498);
+            this.panel1.Location = new System.Drawing.Point(0, 543);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(912, 40);
+            this.panel1.Size = new System.Drawing.Size(940, 40);
             this.panel1.TabIndex = 7;
             // 
             // btnReturn
             // 
             this.btnReturn.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnReturn.Enabled = false;
-            this.btnReturn.Location = new System.Drawing.Point(449, 0);
+            this.btnReturn.Location = new System.Drawing.Point(477, 0);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(463, 40);
             this.btnReturn.TabIndex = 7;
             this.btnReturn.Text = "Вернуть книгу";
             this.btnReturn.UseVisualStyleBackColor = true;
             // 
-            // ReadersFormular
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft YaHei", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(24, 57);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(81, 35);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "ФИО";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ReadersFormularForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(912, 538);
+            this.ClientSize = new System.Drawing.Size(940, 583);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dgvIssuesBooks);
             this.Controls.Add(this.pnTitle);
             this.Controls.Add(this.pictureBox1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
-            this.Name = "ReadersFormular";
+            this.Name = "ReadersFormularForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Формуляр читателя";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -206,5 +221,6 @@
         private System.Windows.Forms.Button btnGive;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnReturn;
+        private System.Windows.Forms.Label label3;
     }
 }

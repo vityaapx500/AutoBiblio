@@ -51,7 +51,6 @@ namespace Автобиблио
                     Hide();
                     LogoForm logoForm = new LogoForm();
                     MainWindow mainWindow = new MainWindow();
-                    logoForm.Close();
                     mainWindow.Show();
                 }
             }

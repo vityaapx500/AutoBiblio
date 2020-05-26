@@ -55,6 +55,7 @@
             this.Name = "LogoForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LogoForm_FormClosing);
             this.Load += new System.EventHandler(this.LogoForm_Load);
             this.ResumeLayout(false);
 

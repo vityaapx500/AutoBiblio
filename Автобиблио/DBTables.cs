@@ -36,13 +36,9 @@ namespace Автобиблио
             "INNER JOIN dbo.Readers AS R ON IB..Reader_ID = R.ID_Reader" +
             "INNER JOIN dbo.Book_Journal AS BJ ON IB.Book_ID = BJ.ID_Book";
         public string QRIssuedBookForCB = "?????????";
-        public string QRReaderFormular = "SELECT RF.ID_Formular, RF.Creation_Date, RF.Phone_Num, RF.Home_Address, RF.Issued_Book_ID, IB.Reader_ID, R.SurName + ' ' + R.Name + ' ' + R.Pantronymic as 'Reader'," +
-            "IB.Book_ID, BJ.Book_Title + ' ' + BJ.Book_Author + ' ' + P.Name_Publisher + ' '+ BJ.Year_Publish as 'Book', IB.Date_Issued, IB.Date_Returned, IB.Returned, BJ.Publisher_ID" +
-            "FROM dbo.Reader_Formular AS RF" +
-            "INNER JOIN dbo.Issued_Book AS IB ON RF.Issued_Book_ID = IB.ID_Issued_Book" +
-            "INNER JOIN dbo.Readers AS R ON IB.Reader_ID = R.ID_Reader" +
-            "INNER JOIN dbo.Book_Journal AS BJ ON IB.Book_ID = BJ.ID_Book" +
-            "INNER JOIN dbo.Publishers AS P ON BJ.Publisher_ID = P.ID_Publisher" +
+        public string QRReaderFormular = "SELECT RF.ID_Formular, RF.Creation_Date, RF.Reader_ID, R.SurName + ' ' + R.Name + ' ' + R.Pantronymic AS 'Reader', " +
+            "RF.Phone_Num, RF.Home_Address FROM dbo.Reader_Formular AS RF " +
+            "INNER JOIN dbo.Readers AS R ON RF.Reader_ID = R.ID_Reader " +
             "WHERE Formular_Logical_Delete = 0";
         public string QROffice = "SELECT * FROM dbo.Offices WHERE Office_Logical_Delete = 0";
         public string QROfficeforCB = "SELECT ID_Office, Office_Address FROM dbo.Offices WHERE Office_Logical_Delete = 0";

@@ -19,19 +19,17 @@ namespace Автобиблио
         {
             AllowTransparency = true;
             TransparencyKey = Color.Black;
-            //dbConnection.ConnectionState += InformationConnection;
-            //threadConnection = new Thread(dbConnection.CheckConnection);
-            //threadConnection.Start();
         }
        private void tmLogo_Tick(object sender, EventArgs e)
         {
-            if (Opacity != 0) Opacity -= 0.07;
+            if (Opacity > 0.1) Opacity -= 0.07;
             else
             {
                 tmLogo.Enabled = false;
                 dbConnection.ConnectionState += InformationConnection;
                 threadConnection = new Thread(dbConnection.CheckConnection);
                 threadConnection.Start();
+                Hide();
             }
         }
 
@@ -68,6 +66,11 @@ namespace Автобиблио
             {
                 threadConnection.Abort();
             }
+        }
+
+        public void LogoForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //Application.Exit();
         }
     }
 }

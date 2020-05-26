@@ -66,12 +66,6 @@
     <Compile Include="AuthorizationForm.Designer.cs">
       <DependentUpon>AuthorizationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="BookInsertForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BookInsertForm.Designer.cs">
-      <DependentUpon>BookInsertForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="CamSearchForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +82,12 @@
     <Compile Include="DBStoredProcedures.cs" />
     <Compile Include="DBTables.cs" />
     <Compile Include="EnableComponent.cs" />
+    <Compile Include="InsertNewReaderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InsertNewReaderForm.Designer.cs">
+      <DependentUpon>InsertNewReaderForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LogoForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,30 +112,30 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="ReadersFormular.cs">
+    <Compile Include="ReadersFormularForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ReadersFormular.Designer.cs">
-      <DependentUpon>ReadersFormular.cs</DependentUpon>
+    <Compile Include="ReadersFormularForm.Designer.cs">
+      <DependentUpon>ReadersFormularForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Registry_Class.cs" />
-    <Compile Include="Users.cs">
+    <Compile Include="UsersForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Users.Designer.cs">
-      <DependentUpon>Users.cs</DependentUpon>
+    <Compile Include="UsersForm.Designer.cs">
+      <DependentUpon>UsersForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AuthorizationForm.resx">
       <DependentUpon>AuthorizationForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BookInsertForm.resx">
-      <DependentUpon>BookInsertForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CamSearchForm.resx">
       <DependentUpon>CamSearchForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ConnectionForm.resx">
       <DependentUpon>ConnectionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InsertNewReaderForm.resx">
+      <DependentUpon>InsertNewReaderForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LogoForm.resx">
       <DependentUpon>LogoForm.cs</DependentUpon>
@@ -152,11 +152,11 @@
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ReadersFormular.resx">
-      <DependentUpon>ReadersFormular.cs</DependentUpon>
+    <EmbeddedResource Include="ReadersFormularForm.resx">
+      <DependentUpon>ReadersFormularForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Users.resx">
-      <DependentUpon>Users.cs</DependentUpon>
+    <EmbeddedResource Include="UsersForm.resx">
+      <DependentUpon>UsersForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

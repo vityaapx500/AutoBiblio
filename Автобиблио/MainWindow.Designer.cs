@@ -38,9 +38,7 @@
             this.IssuedBook = new System.Windows.Forms.TabPage();
             this.ReadersFormulars = new System.Windows.Forms.TabPage();
             this.pnManipulationFormular = new System.Windows.Forms.Panel();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.dgvFormulars = new System.Windows.Forms.DataGridView();
+            this.btnInsertNewReader = new System.Windows.Forms.Button();
             this.BooksJournal = new System.Windows.Forms.TabPage();
             this.dgvBookJournal = new System.Windows.Forms.DataGridView();
             this.gbManipulationData = new System.Windows.Forms.GroupBox();
@@ -63,16 +61,17 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnInsertBook = new System.Windows.Forms.Button();
             this.Settings = new System.Windows.Forms.TabPage();
+            this.dgvFormulars = new System.Windows.Forms.DataGridView();
             this.sstMain.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tcMainControl.SuspendLayout();
             this.ReadersFormulars.SuspendLayout();
             this.pnManipulationFormular.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFormulars)).BeginInit();
             this.BooksJournal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookJournal)).BeginInit();
             this.gbManipulationData.SuspendLayout();
             this.pnComboBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFormulars)).BeginInit();
             this.SuspendLayout();
             // 
             // sstMain
@@ -151,8 +150,8 @@
             // 
             // ReadersFormulars
             // 
-            this.ReadersFormulars.Controls.Add(this.pnManipulationFormular);
             this.ReadersFormulars.Controls.Add(this.dgvFormulars);
+            this.ReadersFormulars.Controls.Add(this.pnManipulationFormular);
             this.ReadersFormulars.Location = new System.Drawing.Point(4, 25);
             this.ReadersFormulars.Margin = new System.Windows.Forms.Padding(4);
             this.ReadersFormulars.Name = "ReadersFormulars";
@@ -163,8 +162,7 @@
             // 
             // pnManipulationFormular
             // 
-            this.pnManipulationFormular.Controls.Add(this.button6);
-            this.pnManipulationFormular.Controls.Add(this.button5);
+            this.pnManipulationFormular.Controls.Add(this.btnInsertNewReader);
             this.pnManipulationFormular.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnManipulationFormular.Location = new System.Drawing.Point(0, 0);
             this.pnManipulationFormular.Margin = new System.Windows.Forms.Padding(4);
@@ -172,37 +170,17 @@
             this.pnManipulationFormular.Size = new System.Drawing.Size(1419, 36);
             this.pnManipulationFormular.TabIndex = 4;
             // 
-            // button6
+            // btnInsertNewReader
             // 
-            this.button6.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button6.Location = new System.Drawing.Point(967, 0);
-            this.button6.Margin = new System.Windows.Forms.Padding(4);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(224, 36);
-            this.button6.TabIndex = 7;
-            this.button6.Text = "Записать нового читателя";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button5.Location = new System.Drawing.Point(1191, 0);
-            this.button5.Margin = new System.Windows.Forms.Padding(4);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(228, 36);
-            this.button5.TabIndex = 5;
-            this.button5.Text = "Удалить формуляр читателя";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // dgvFormulars
-            // 
-            this.dgvFormulars.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFormulars.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvFormulars.Location = new System.Drawing.Point(0, 0);
-            this.dgvFormulars.Margin = new System.Windows.Forms.Padding(4);
-            this.dgvFormulars.Name = "dgvFormulars";
-            this.dgvFormulars.Size = new System.Drawing.Size(1419, 633);
-            this.dgvFormulars.TabIndex = 3;
+            this.btnInsertNewReader.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnInsertNewReader.Location = new System.Drawing.Point(0, 0);
+            this.btnInsertNewReader.Margin = new System.Windows.Forms.Padding(4);
+            this.btnInsertNewReader.Name = "btnInsertNewReader";
+            this.btnInsertNewReader.Size = new System.Drawing.Size(224, 36);
+            this.btnInsertNewReader.TabIndex = 7;
+            this.btnInsertNewReader.Text = "Записать нового читателя";
+            this.btnInsertNewReader.UseVisualStyleBackColor = true;
+            this.btnInsertNewReader.Click += new System.EventHandler(this.btnInsertNewReader_Click);
             // 
             // BooksJournal
             // 
@@ -467,6 +445,16 @@
             this.Settings.Text = "Настройки";
             this.Settings.UseVisualStyleBackColor = true;
             // 
+            // dgvFormulars
+            // 
+            this.dgvFormulars.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFormulars.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvFormulars.Location = new System.Drawing.Point(0, 36);
+            this.dgvFormulars.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvFormulars.Name = "dgvFormulars";
+            this.dgvFormulars.Size = new System.Drawing.Size(1419, 597);
+            this.dgvFormulars.TabIndex = 5;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -489,12 +477,12 @@
             this.tcMainControl.ResumeLayout(false);
             this.ReadersFormulars.ResumeLayout(false);
             this.pnManipulationFormular.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFormulars)).EndInit();
             this.BooksJournal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookJournal)).EndInit();
             this.gbManipulationData.ResumeLayout(false);
             this.gbManipulationData.PerformLayout();
             this.pnComboBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFormulars)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -511,9 +499,7 @@
         private System.Windows.Forms.TabPage IssuedBook;
         private System.Windows.Forms.TabPage ReadersFormulars;
         private System.Windows.Forms.Panel pnManipulationFormular;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        public System.Windows.Forms.DataGridView dgvFormulars;
+        private System.Windows.Forms.Button btnInsertNewReader;
         private System.Windows.Forms.TabPage BooksJournal;
         public System.Windows.Forms.DataGridView dgvBookJournal;
         private System.Windows.Forms.GroupBox gbManipulationData;
@@ -536,6 +522,7 @@
         private System.Windows.Forms.Label lblPrice;
         private System.Windows.Forms.ComboBox cbOffice;
         private System.Windows.Forms.Label lblOffice;
+        public System.Windows.Forms.DataGridView dgvFormulars;
     }
 }
 

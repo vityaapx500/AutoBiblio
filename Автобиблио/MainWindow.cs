@@ -11,7 +11,7 @@ namespace Автобиблио
         private DBStoredProcedures storedProcedures = new DBStoredProcedures();
         private Thread threadConnection;
         private static DateTime dateToday = DateTime.Now;
-        public string today = dateToday.Date.ToString("dd-MM--yyyy");
+        private string today = dateToday.Date.ToString("dd.MM.yyyy");
                     
         public MainWindow()
         {
@@ -29,12 +29,6 @@ namespace Автобиблио
             threadFormularsFill.Start();
             tbDateAcceptance.Text = today;
             
-        }
-        private void btnNewFormular_Click(object sender, EventArgs e)
-        {
-            ReadersFormularForm RF = new ReadersFormularForm();
-            RF.Show();
-
         }
         private void InformationConnection(bool value)  //проверка подключения к базе данных
         {
@@ -165,7 +159,7 @@ namespace Автобиблио
             if (e.Info != SqlNotificationInfo.Invalid)
                 OfficesFill();
         }
-        private void btnInsertBook_Click(object sender, EventArgs e) //Кнопка Внесение книги в фодн
+        private void btnNewBook_Click(object sender, EventArgs e) //Кнопка Внесение книги в фодн
         {
             try
             {
@@ -186,7 +180,7 @@ namespace Автобиблио
             tbDateAcceptance.Clear();
             tbPrice.Clear();
         }
-        private void btnDelete_Click(object sender, EventArgs e)    //кнопка Списания книги
+        private void btnDeleteBook_Click(object sender, EventArgs e)    //кнопка Списания книги
         {
             switch (MessageBox.Show(MessageUser.QuestionDeleteBook + " " + tbBookTitle.Text + "?", "Списание книги", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
             {
@@ -244,21 +238,48 @@ namespace Автобиблио
             };
             Invoke(action);
         }
-        private void ChangeReadersFormulars(object sender, SqlNotificationEventArgs e)
-        {
-            if (e.Info != SqlNotificationInfo.Invalid)
-                BookJournalFill();
-        }
+        //В конец
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult dialogResult = (MessageBox.Show("Вы действительно хотите выйти?", "Выход из системы", MessageBoxButtons.YesNo, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button2));
+            DialogResult dialogResult = (MessageBox.Show("Вы действительно хотите выйти?", "Выход из системы", MessageBoxButtons.YesNo, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1));
             if (dialogResult == DialogResult.Yes)
             {
                 Application.Exit();
-                //LogoForm logoForm = new LogoForm();
-                //logoForm.LogoForm_FormClosing(sender, e);
             }
             else e.Cancel = true;
+        }
+
+        private void btnDeleteFormular_Click(object sender, EventArgs e)
+        {
+            switch (MessageBox.Show("Удалить формуляр читателя?", "Удаление формуляра", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+            {
+                case DialogResult.Yes:
+                    if (AuthorizationForm.userRole == 1)
+                        storedProcedures.SPReaderFormularDelete(Convert.ToInt32(dgvFormulars.CurrentRow.Cells[0].Value.ToString()));
+                    break;
+            }
+        }
+        public static string FormularNumber;
+        public static string CreationDate;
+        public static string FIOReader;
+        public static string PhoneNumber;
+        public static string HomeAddress;
+
+        private void dgvFormulars_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            FormularNumber = dgvFormulars.CurrentRow.Cells[0].Value.ToString();
+            CreationDate = dgvFormulars.CurrentRow.Cells[1].Value.ToString();
+            FIOReader = dgvFormulars.CurrentRow.Cells[3].Value.ToString();
+            PhoneNumber = dgvFormulars.CurrentRow.Cells[4].Value.ToString();
+            HomeAddress = dgvFormulars.CurrentRow.Cells[5].Value.ToString();
+
+            ReadersFormularForm readersFormularForm = new ReadersFormularForm();
+            readersFormularForm.Show();
+        }
+        private void ChangeReadersFormulars(object sender, SqlNotificationEventArgs e)
+        {
+            if (e.Info != SqlNotificationInfo.Invalid)
+                ReadersFormularsFill();
         }
     }
 }

@@ -7,6 +7,7 @@ namespace Автобиблио
 {
     class DBTables
     {
+        MainWindow mainWindow = new MainWindow();
         public SqlCommand command = new SqlCommand("", Registry_Class.sqlConnection);
         public DataTable DTBookJournal = new DataTable("Book_Journal");
         public DataTable DTIssuedBook = new DataTable("Issued_Book");
@@ -19,7 +20,7 @@ namespace Автобиблио
         public SqlDependency dependency = new SqlDependency();
 
         public string QRReaders = "SELECT * FROM dbo.Readers WHERE Reader_Logical_Delete = 0";
-        public string QRReadersForCB = "SELECT ID_Reader, SurName + ' ' + Name + ' ' + Pantronymic as 'Reader' FROM dbo.Readers WHERE Reader_Logical_Delete= 0";
+        public string QRReadersForCB = "SELECT ID_Reader, SurName + ' ' + Name + ' ' + Pantronymic  'Reader' FROM dbo.Readers WHERE Reader_Logical_Delete= 0";
         public string QRPublishers = "SELECT * FROM dbo.Publishers WHERE Publisher_Logical_Delete = 0";
         public string QRPublishersForCB = "SELECT ID_Publisher, Name_Publisher FROM dbo.Publishers WHERE Publisher_Logical_Delete = 0";
         public string QRUsers = "SELECT * FROM dbo.Users WHERE User_Logical_Delete = 0";
@@ -31,11 +32,12 @@ namespace Автобиблио
             "INNER JOIN dbo.Offices AS O ON BJ.Office_ID = O.ID_Office " +
             "WHERE Book_Logical_Delete = 0";
         public string QRBookJournalForCB = "SELECT ID_Book, Book_Title + ' ' + Book_Author + ' ' + Year_Publish AS 'Book' FROM dbo.Book_Journal WHERE Book_Logical_Delete = 0";
-        public string QRIssuedBook = "SELECT IB.ID_Issued_Book, IB.Reader_ID, R.SurName + ' ' + R.Name + ' ' + R.Pantronymic AS 'Reader', IB.Book_ID," +
-            "BJ.Book_Title + ' ' + BJ.Book_Author + ' ' + BJ.Year_Publish as 'Book', IB.Date_Issued, IB.Date_Returned, IB.Returned FROM dbo.Issued_Book AS IB" +
-            "INNER JOIN dbo.Readers AS R ON IB..Reader_ID = R.ID_Reader" +
-            "INNER JOIN dbo.Book_Journal AS BJ ON IB.Book_ID = BJ.ID_Book";
-        public string QRIssuedBookForCB = "?????????";
+        public string QRIssuedBook = "SELECT IB.ID_Issued_Book, IB.Reader_Formular_ID, RF.ID_Formular, IB.Book_ID, BJ.Book_Title + ', ' + BJ.Book_Author + ', ' + BJ.Year_Publish AS 'Book', " +
+            "IB.Date_Issued, IB.Date_Returned, IB.Returned FROM dbo.Issued_Book AS IB " +
+            "INNER JOIN dbo.Reader_Formular AS RF on IB.Reader_Formular_ID = ID_Formular " +
+            "INNER JOIN dbo.Book_Journal AS BJ ON IB.Book_ID = BJ.ID_Book ";// +
+            //"WHERE Reader_Formular_ID = ";
+            //"WHERE Issued_Book_Logical_Delete = 0";
         public string QRReaderFormular = "SELECT RF.ID_Formular, RF.Creation_Date, RF.Reader_ID, R.SurName + ' ' + R.Name + ' ' + R.Pantronymic AS 'Reader', " +
             "RF.Phone_Num, RF.Home_Address FROM dbo.Reader_Formular AS RF " +
             "INNER JOIN dbo.Readers AS R ON RF.Reader_ID = R.ID_Reader " +
@@ -105,10 +107,10 @@ namespace Автобиблио
         {
             DataTableFill(DTIssuedBook, QRIssuedBook);
         }
-        public void DTCBIssuedBookFill()
-        {
-            DataTableFill(DTIssuedBook, QRIssuedBookForCB);
-        }
+        //public void DTCBIssuedBookFill()
+        //{
+        //    DataTableFill(DTIssuedBook, QRIssuedBookForCB);
+        //}
         public void DTReaderFormularFIll()
         {
             DataTableFill(DTReaderFormular, QRReaderFormular);

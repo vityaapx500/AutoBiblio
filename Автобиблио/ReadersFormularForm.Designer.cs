@@ -31,25 +31,25 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblNum = new System.Windows.Forms.Label();
-            this.lblDateCreation = new System.Windows.Forms.Label();
+            this.lblCreationDate = new System.Windows.Forms.Label();
             this.pnTitle = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dgvIssuesBooks = new System.Windows.Forms.DataGridView();
+            this.lblReader = new System.Windows.Forms.Label();
+            this.lblHomeAddress = new System.Windows.Forms.Label();
+            this.lblPhoneNumber = new System.Windows.Forms.Label();
+            this.dgvIssuedBooks = new System.Windows.Forms.DataGridView();
             this.btnGive = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnReturn = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnTitle.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvIssuesBooks)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvIssuedBooks)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox1.Location = new System.Drawing.Point(16, 15);
+            this.pictureBox1.Location = new System.Drawing.Point(15, 15);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(218, 218);
@@ -80,70 +80,83 @@
             this.lblNum.Text = "№";
             this.lblNum.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblDateCreation
+            // lblCreationDate
             // 
-            this.lblDateCreation.AutoSize = true;
-            this.lblDateCreation.Font = new System.Drawing.Font("Microsoft YaHei", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblDateCreation.Location = new System.Drawing.Point(305, 106);
-            this.lblDateCreation.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblDateCreation.Name = "lblDateCreation";
-            this.lblDateCreation.Size = new System.Drawing.Size(198, 31);
-            this.lblDateCreation.TabIndex = 3;
-            this.lblDateCreation.Text = "Дата создания: ";
-            this.lblDateCreation.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblCreationDate.AutoSize = true;
+            this.lblCreationDate.Font = new System.Drawing.Font("Microsoft YaHei", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblCreationDate.Location = new System.Drawing.Point(305, 106);
+            this.lblCreationDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCreationDate.Name = "lblCreationDate";
+            this.lblCreationDate.Size = new System.Drawing.Size(198, 31);
+            this.lblCreationDate.TabIndex = 3;
+            this.lblCreationDate.Text = "Дата создания: ";
+            this.lblCreationDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pnTitle
             // 
             this.pnTitle.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pnTitle.Controls.Add(this.label3);
-            this.pnTitle.Controls.Add(this.label1);
-            this.pnTitle.Controls.Add(this.label2);
+            this.pnTitle.Controls.Add(this.lblReader);
+            this.pnTitle.Controls.Add(this.lblHomeAddress);
+            this.pnTitle.Controls.Add(this.lblPhoneNumber);
             this.pnTitle.Controls.Add(this.lblTitle);
-            this.pnTitle.Controls.Add(this.lblDateCreation);
+            this.pnTitle.Controls.Add(this.lblCreationDate);
             this.pnTitle.Controls.Add(this.lblNum);
             this.pnTitle.Location = new System.Drawing.Point(245, 15);
             this.pnTitle.Margin = new System.Windows.Forms.Padding(4);
             this.pnTitle.Name = "pnTitle";
-            this.pnTitle.Size = new System.Drawing.Size(691, 218);
+            this.pnTitle.Size = new System.Drawing.Size(679, 218);
             this.pnTitle.TabIndex = 4;
             // 
-            // label1
+            // lblReader
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft YaHei", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(24, 185);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(232, 31);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Домашний адрес: ";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblReader.AutoSize = true;
+            this.lblReader.Font = new System.Drawing.Font("Microsoft YaHei", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblReader.Location = new System.Drawing.Point(24, 57);
+            this.lblReader.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblReader.Name = "lblReader";
+            this.lblReader.Size = new System.Drawing.Size(81, 35);
+            this.lblReader.TabIndex = 6;
+            this.lblReader.Text = "ФИО";
+            this.lblReader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label2
+            // lblHomeAddress
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft YaHei", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(24, 143);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(229, 31);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Номер телефона: ";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblHomeAddress.AutoSize = true;
+            this.lblHomeAddress.Font = new System.Drawing.Font("Microsoft YaHei", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblHomeAddress.Location = new System.Drawing.Point(24, 185);
+            this.lblHomeAddress.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblHomeAddress.Name = "lblHomeAddress";
+            this.lblHomeAddress.Size = new System.Drawing.Size(232, 31);
+            this.lblHomeAddress.TabIndex = 5;
+            this.lblHomeAddress.Text = "Домашний адрес: ";
+            this.lblHomeAddress.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // dgvIssuesBooks
+            // lblPhoneNumber
             // 
-            this.dgvIssuesBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvIssuesBooks.Location = new System.Drawing.Point(4, 241);
-            this.dgvIssuesBooks.Margin = new System.Windows.Forms.Padding(4);
-            this.dgvIssuesBooks.Name = "dgvIssuesBooks";
-            this.dgvIssuesBooks.Size = new System.Drawing.Size(932, 299);
-            this.dgvIssuesBooks.TabIndex = 5;
+            this.lblPhoneNumber.AutoSize = true;
+            this.lblPhoneNumber.Font = new System.Drawing.Font("Microsoft YaHei", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblPhoneNumber.Location = new System.Drawing.Point(24, 143);
+            this.lblPhoneNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPhoneNumber.Name = "lblPhoneNumber";
+            this.lblPhoneNumber.Size = new System.Drawing.Size(229, 31);
+            this.lblPhoneNumber.TabIndex = 4;
+            this.lblPhoneNumber.Text = "Номер телефона: ";
+            this.lblPhoneNumber.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // dgvIssuedBooks
+            // 
+            this.dgvIssuedBooks.AllowUserToAddRows = false;
+            this.dgvIssuedBooks.BackgroundColor = System.Drawing.Color.White;
+            this.dgvIssuedBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvIssuedBooks.Location = new System.Drawing.Point(15, 241);
+            this.dgvIssuedBooks.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvIssuedBooks.Name = "dgvIssuedBooks";
+            this.dgvIssuedBooks.Size = new System.Drawing.Size(909, 299);
+            this.dgvIssuedBooks.TabIndex = 5;
             // 
             // btnGive
             // 
             this.btnGive.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnGive.Enabled = false;
             this.btnGive.Location = new System.Drawing.Point(0, 0);
             this.btnGive.Name = "btnGive";
             this.btnGive.Size = new System.Drawing.Size(468, 40);
@@ -173,25 +186,13 @@
             this.btnReturn.Text = "Вернуть книгу";
             this.btnReturn.UseVisualStyleBackColor = true;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft YaHei", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(24, 57);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 35);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "ФИО";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // ReadersFormularForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(940, 583);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.dgvIssuesBooks);
+            this.Controls.Add(this.dgvIssuedBooks);
             this.Controls.Add(this.pnTitle);
             this.Controls.Add(this.pictureBox1);
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -199,10 +200,11 @@
             this.Name = "ReadersFormularForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Формуляр читателя";
+            this.Load += new System.EventHandler(this.ReadersFormularForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnTitle.ResumeLayout(false);
             this.pnTitle.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvIssuesBooks)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvIssuedBooks)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -213,14 +215,14 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label lblNum;
-        private System.Windows.Forms.Label lblDateCreation;
+        private System.Windows.Forms.Label lblCreationDate;
         private System.Windows.Forms.Panel pnTitle;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dgvIssuesBooks;
+        private System.Windows.Forms.Label lblHomeAddress;
+        private System.Windows.Forms.Label lblPhoneNumber;
+        private System.Windows.Forms.DataGridView dgvIssuedBooks;
         private System.Windows.Forms.Button btnGive;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnReturn;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblReader;
     }
 }

@@ -88,6 +88,15 @@ namespace Автобиблио {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Формуляр успешно добавлен!.
+        /// </summary>
+        internal static string FormularInsert {
+            get {
+                return ResourceManager.GetString("FormularInsert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Подключение отсутствует!.
         /// </summary>
         internal static string NoConnection {
@@ -102,6 +111,24 @@ namespace Автобиблио {
         internal static string QuestionDeleteBook {
             get {
                 return ResourceManager.GetString("QuestionDeleteBook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Ошибка сканирования.
+        /// </summary>
+        internal static string ScanError {
+            get {
+                return ResourceManager.GetString("ScanError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Просканирован неверный код.
+        /// </summary>
+        internal static string ScanNotDigit {
+            get {
+                return ResourceManager.GetString("ScanNotDigit", resourceCulture);
             }
         }
         

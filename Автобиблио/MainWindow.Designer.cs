@@ -35,9 +35,10 @@
             this.пользователиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ролиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tcMainControl = new System.Windows.Forms.TabControl();
-            this.IssuedBook = new System.Windows.Forms.TabPage();
             this.ReadersFormulars = new System.Windows.Forms.TabPage();
+            this.dgvFormulars = new System.Windows.Forms.DataGridView();
             this.pnManipulationFormular = new System.Windows.Forms.Panel();
+            this.btnDeleteFormular = new System.Windows.Forms.Button();
             this.btnInsertNewReader = new System.Windows.Forms.Button();
             this.BooksJournal = new System.Windows.Forms.TabPage();
             this.dgvBookJournal = new System.Windows.Forms.DataGridView();
@@ -61,17 +62,16 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnInsertBook = new System.Windows.Forms.Button();
             this.Settings = new System.Windows.Forms.TabPage();
-            this.dgvFormulars = new System.Windows.Forms.DataGridView();
             this.sstMain.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tcMainControl.SuspendLayout();
             this.ReadersFormulars.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFormulars)).BeginInit();
             this.pnManipulationFormular.SuspendLayout();
             this.BooksJournal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookJournal)).BeginInit();
             this.gbManipulationData.SuspendLayout();
             this.pnComboBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFormulars)).BeginInit();
             this.SuspendLayout();
             // 
             // sstMain
@@ -125,7 +125,6 @@
             // 
             // tcMainControl
             // 
-            this.tcMainControl.Controls.Add(this.IssuedBook);
             this.tcMainControl.Controls.Add(this.ReadersFormulars);
             this.tcMainControl.Controls.Add(this.BooksJournal);
             this.tcMainControl.Controls.Add(this.Settings);
@@ -136,17 +135,6 @@
             this.tcMainControl.SelectedIndex = 0;
             this.tcMainControl.Size = new System.Drawing.Size(1427, 662);
             this.tcMainControl.TabIndex = 3;
-            // 
-            // IssuedBook
-            // 
-            this.IssuedBook.Location = new System.Drawing.Point(4, 25);
-            this.IssuedBook.Margin = new System.Windows.Forms.Padding(4);
-            this.IssuedBook.Name = "IssuedBook";
-            this.IssuedBook.Padding = new System.Windows.Forms.Padding(4);
-            this.IssuedBook.Size = new System.Drawing.Size(1419, 633);
-            this.IssuedBook.TabIndex = 0;
-            this.IssuedBook.Text = "Выдача книги";
-            this.IssuedBook.UseVisualStyleBackColor = true;
             // 
             // ReadersFormulars
             // 
@@ -160,8 +148,24 @@
             this.ReadersFormulars.Text = "Формуляры читателей";
             this.ReadersFormulars.UseVisualStyleBackColor = true;
             // 
+            // dgvFormulars
+            // 
+            this.dgvFormulars.AllowUserToAddRows = false;
+            this.dgvFormulars.AllowUserToDeleteRows = false;
+            this.dgvFormulars.BackgroundColor = System.Drawing.Color.White;
+            this.dgvFormulars.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFormulars.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvFormulars.Location = new System.Drawing.Point(0, 36);
+            this.dgvFormulars.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvFormulars.Name = "dgvFormulars";
+            this.dgvFormulars.ReadOnly = true;
+            this.dgvFormulars.Size = new System.Drawing.Size(1419, 597);
+            this.dgvFormulars.TabIndex = 5;
+            this.dgvFormulars.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFormulars_CellDoubleClick);
+            // 
             // pnManipulationFormular
             // 
+            this.pnManipulationFormular.Controls.Add(this.btnDeleteFormular);
             this.pnManipulationFormular.Controls.Add(this.btnInsertNewReader);
             this.pnManipulationFormular.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnManipulationFormular.Location = new System.Drawing.Point(0, 0);
@@ -169,6 +173,18 @@
             this.pnManipulationFormular.Name = "pnManipulationFormular";
             this.pnManipulationFormular.Size = new System.Drawing.Size(1419, 36);
             this.pnManipulationFormular.TabIndex = 4;
+            // 
+            // btnDeleteFormular
+            // 
+            this.btnDeleteFormular.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnDeleteFormular.Location = new System.Drawing.Point(224, 0);
+            this.btnDeleteFormular.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDeleteFormular.Name = "btnDeleteFormular";
+            this.btnDeleteFormular.Size = new System.Drawing.Size(224, 36);
+            this.btnDeleteFormular.TabIndex = 8;
+            this.btnDeleteFormular.Text = "Удалить формуляр читателя";
+            this.btnDeleteFormular.UseVisualStyleBackColor = true;
+            this.btnDeleteFormular.Click += new System.EventHandler(this.btnDeleteFormular_Click);
             // 
             // btnInsertNewReader
             // 
@@ -197,6 +213,7 @@
             // 
             // dgvBookJournal
             // 
+            this.dgvBookJournal.BackgroundColor = System.Drawing.Color.White;
             this.dgvBookJournal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBookJournal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvBookJournal.Location = new System.Drawing.Point(251, 4);
@@ -422,6 +439,7 @@
             this.btnDelete.TabIndex = 20;
             this.btnDelete.Text = "Списать книгу";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDeleteBook_Click);
             // 
             // btnInsertBook
             // 
@@ -434,6 +452,7 @@
             this.btnInsertBook.TabIndex = 19;
             this.btnInsertBook.Text = "Внести новую книгу";
             this.btnInsertBook.UseVisualStyleBackColor = true;
+            this.btnInsertBook.Click += new System.EventHandler(this.btnNewBook_Click);
             // 
             // Settings
             // 
@@ -444,16 +463,6 @@
             this.Settings.TabIndex = 5;
             this.Settings.Text = "Настройки";
             this.Settings.UseVisualStyleBackColor = true;
-            // 
-            // dgvFormulars
-            // 
-            this.dgvFormulars.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFormulars.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvFormulars.Location = new System.Drawing.Point(0, 36);
-            this.dgvFormulars.Margin = new System.Windows.Forms.Padding(4);
-            this.dgvFormulars.Name = "dgvFormulars";
-            this.dgvFormulars.Size = new System.Drawing.Size(1419, 597);
-            this.dgvFormulars.TabIndex = 5;
             // 
             // MainWindow
             // 
@@ -476,13 +485,13 @@
             this.menuStrip1.PerformLayout();
             this.tcMainControl.ResumeLayout(false);
             this.ReadersFormulars.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFormulars)).EndInit();
             this.pnManipulationFormular.ResumeLayout(false);
             this.BooksJournal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookJournal)).EndInit();
             this.gbManipulationData.ResumeLayout(false);
             this.gbManipulationData.PerformLayout();
             this.pnComboBox.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFormulars)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -496,7 +505,6 @@
         private System.Windows.Forms.ToolStripMenuItem пользователиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ролиToolStripMenuItem;
         private System.Windows.Forms.TabControl tcMainControl;
-        private System.Windows.Forms.TabPage IssuedBook;
         private System.Windows.Forms.TabPage ReadersFormulars;
         private System.Windows.Forms.Panel pnManipulationFormular;
         private System.Windows.Forms.Button btnInsertNewReader;
@@ -523,6 +531,7 @@
         private System.Windows.Forms.ComboBox cbOffice;
         private System.Windows.Forms.Label lblOffice;
         public System.Windows.Forms.DataGridView dgvFormulars;
+        private System.Windows.Forms.Button btnDeleteFormular;
     }
 }
 

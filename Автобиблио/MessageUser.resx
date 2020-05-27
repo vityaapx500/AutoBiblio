@@ -126,11 +126,20 @@
   <data name="DatabaseSearchTochki" xml:space="preserve">
     <value>Поиск баз данных...</value>
   </data>
+  <data name="FormularInsert" xml:space="preserve">
+    <value>Формуляр успешно добавлен!</value>
+  </data>
   <data name="NoConnection" xml:space="preserve">
     <value>Подключение отсутствует!</value>
   </data>
   <data name="QuestionDeleteBook" xml:space="preserve">
     <value>Списать книгу</value>
+  </data>
+  <data name="ScanError" xml:space="preserve">
+    <value>Ошибка сканирования</value>
+  </data>
+  <data name="ScanNotDigit" xml:space="preserve">
+    <value>Просканирован неверный код</value>
   </data>
   <data name="ServerSearch" xml:space="preserve">
     <value>Поиск серверов</value>

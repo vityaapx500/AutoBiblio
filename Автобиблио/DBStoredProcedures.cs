@@ -260,23 +260,25 @@ namespace Автобиблио
             ExecuteStoredProcedure();
         }
         //Процедуры для таблицы Формуляр
-        public void SPReaderFormularInsert(string Creation_Date, string Phone_Num, string Home_Address) //Добавление пользователя
+        public void SPReaderFormularInsert(string Creation_Date, Int32 ReaderID, string Phone_Num, string Home_Address) //Добавление пользователя
         {
             ConfigurationProcedure("Formular_Insert");
 
             storedProcedure.Parameters.AddWithValue("@Creation_Date", Creation_Date);
+            storedProcedure.Parameters.AddWithValue("@Reader_ID", ReaderID);
             storedProcedure.Parameters.AddWithValue("@Phone_Num", Phone_Num);
             storedProcedure.Parameters.AddWithValue("@Home_Address", Home_Address);
 
             ExecuteStoredProcedure();
         }
 
-        public void SPReaderFormularUpdate(Int32 IDFormular, string Creation_Date, string Phone_Num, string Home_Address) //Обновление данных о пользователе
+        public void SPReaderFormularUpdate(Int32 IDFormular, string Creation_Date, Int32 ReaderID, string Phone_Num, string Home_Address) //Обновление данных о пользователе
         {
             ConfigurationProcedure("Formular_Update");
 
             storedProcedure.Parameters.AddWithValue("@ID_Formular", IDFormular);
             storedProcedure.Parameters.AddWithValue("@Creation_Date", Creation_Date);
+            storedProcedure.Parameters.AddWithValue("@Reader_ID", ReaderID);
             storedProcedure.Parameters.AddWithValue("@Phone_Num", Phone_Num);
             storedProcedure.Parameters.AddWithValue("@Home_Address", Home_Address);
 

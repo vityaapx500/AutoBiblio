@@ -17,6 +17,7 @@ namespace Автобиблио
         public DataTable DTUsers = new DataTable("Users");
         public DataTable DTReaders = new DataTable("Readers");
         public DataTable DTOffices = new DataTable("Offices");
+        public DataTable DTStatusIssue = new DataTable("Status_Issue");
         public SqlDependency dependency = new SqlDependency();
 
         public string QRReaders = "SELECT * FROM dbo.Readers WHERE Reader_Logical_Delete = 0";
@@ -32,20 +33,15 @@ namespace Автобиблио
             "INNER JOIN dbo.Offices AS O ON BJ.Office_ID = O.ID_Office " +
             "WHERE Book_Logical_Delete = 0";
         public string QRBookJournalForCB = "SELECT ID_Book, Book_Title + ' ' + Book_Author + ' ' + Year_Publish AS 'Book' FROM dbo.Book_Journal WHERE Book_Logical_Delete = 0";
-        public string QRIssuedBook = "SELECT IB.ID_Issued_Book, IB.Reader_Formular_ID, RF.ID_Formular, IB.Book_ID, BJ.Book_Title + ', ' + BJ.Book_Author + ', ' + BJ.Year_Publish AS 'Book', " +
-            "IB.Date_Issued, IB.Date_Returned, IB.Returned FROM dbo.Issued_Book AS IB " +
-            "INNER JOIN dbo.Reader_Formular AS RF on IB.Reader_Formular_ID = ID_Formular " +
-            "INNER JOIN dbo.Book_Journal AS BJ ON IB.Book_ID = BJ.ID_Book ";// +
-            //"WHERE Reader_Formular_ID = ";
-            //"WHERE Issued_Book_Logical_Delete = 0";
         public string QRReaderFormular = "SELECT RF.ID_Formular, RF.Creation_Date, RF.Reader_ID, R.SurName + ' ' + R.Name + ' ' + R.Pantronymic AS 'Reader', " +
             "RF.Phone_Num, RF.Home_Address FROM dbo.Reader_Formular AS RF " +
             "INNER JOIN dbo.Readers AS R ON RF.Reader_ID = R.ID_Reader " +
             "WHERE Formular_Logical_Delete = 0";
         public string QROffice = "SELECT * FROM dbo.Offices WHERE Office_Logical_Delete = 0";
         public string QROfficeforCB = "SELECT ID_Office, Office_Address FROM dbo.Offices WHERE Office_Logical_Delete = 0";
+        public string QRStatusIssue = "SELECT * FROM dbo.Status_Issue";
 
-        private void DataTableFill(DataTable table, string query)
+        public void DataTableFill(DataTable table, string query)
         {
             try
             {
@@ -103,14 +99,6 @@ namespace Автобиблио
         {
             DataTableFill(DTBookJournal, QRBookJournalForCB);
         }
-        public void DTIssuedBookFill()
-        {
-            DataTableFill(DTIssuedBook, QRIssuedBook);
-        }
-        //public void DTCBIssuedBookFill()
-        //{
-        //    DataTableFill(DTIssuedBook, QRIssuedBookForCB);
-        //}
         public void DTReaderFormularFIll()
         {
             DataTableFill(DTReaderFormular, QRReaderFormular);

@@ -120,6 +120,12 @@
   <data name="AllMargin" xml:space="preserve">
     <value>Все поля должны быть заполнены!</value>
   </data>
+  <data name="BookGiveSuccess" xml:space="preserve">
+    <value>Книга успешно выдана!</value>
+  </data>
+  <data name="BookReturnSuccess" xml:space="preserve">
+    <value>Книга успешно возвращена!</value>
+  </data>
   <data name="DatabaseSearch" xml:space="preserve">
     <value>Поиск баз данных</value>
   </data>

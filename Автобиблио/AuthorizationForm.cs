@@ -88,7 +88,7 @@ namespace Автобиблио
 
         private void AuthorizationForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            
+            Application.Exit();
         }
     }
 }

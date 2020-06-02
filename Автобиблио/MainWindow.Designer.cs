@@ -258,7 +258,7 @@
             this.tbPrice.Name = "tbPrice";
             this.tbPrice.Size = new System.Drawing.Size(239, 22);
             this.tbPrice.TabIndex = 59;
-            this.tbPrice.Text = "123";
+            this.tbPrice.Text = "150";
             // 
             // lblPrice
             // 
@@ -325,7 +325,7 @@
             this.tbYearPublish.Name = "tbYearPublish";
             this.tbYearPublish.Size = new System.Drawing.Size(239, 22);
             this.tbYearPublish.TabIndex = 51;
-            this.tbYearPublish.Text = "1234";
+            this.tbYearPublish.Text = "2001";
             // 
             // lblYearPublish
             // 
@@ -381,7 +381,7 @@
             this.tbBookAuthor.Name = "tbBookAuthor";
             this.tbBookAuthor.Size = new System.Drawing.Size(239, 22);
             this.tbBookAuthor.TabIndex = 47;
-            this.tbBookAuthor.Text = "asdf";
+            this.tbBookAuthor.Text = "Лев Никовалевич Толстой";
             // 
             // lblBookAuthor
             // 
@@ -403,7 +403,7 @@
             this.tbBookTitle.Name = "tbBookTitle";
             this.tbBookTitle.Size = new System.Drawing.Size(239, 22);
             this.tbBookTitle.TabIndex = 44;
-            this.tbBookTitle.Text = "asdf";
+            this.tbBookTitle.Text = "Война и мир";
             // 
             // lbBookTitle
             // 

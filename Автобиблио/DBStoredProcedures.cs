@@ -213,31 +213,37 @@ namespace Автобиблио
             ExecuteStoredProcedure();
         }
         //Процедуры для таблицы Выданная книга
-        public void SPIssuedBookInsert(Int32 ReaderID, Int32 BookID, Int32 ReaderFormularID, string DateIssued, string DateReturned, Int32 Returned) //Добавление выданной книги
+        public void SPIssuedBookInsert(Int32 BookID, Int32 ReaderFormularID, string DateIssued, string DateReturned, Int32 Status_ID) //Добавление выданной книги
         {
             ConfigurationProcedure("Issued_Book_Insert");
 
-            storedProcedure.Parameters.AddWithValue("@Reader_ID", ReaderID);
             storedProcedure.Parameters.AddWithValue("@Book_ID", BookID);
             storedProcedure.Parameters.AddWithValue("@Reader_Formular_ID", ReaderFormularID);
             storedProcedure.Parameters.AddWithValue("@Date_Issued", DateIssued);
             storedProcedure.Parameters.AddWithValue("@Date_Returned", DateReturned);
-            storedProcedure.Parameters.AddWithValue("@Returned", Returned);
+            storedProcedure.Parameters.AddWithValue("@Status_ID", Status_ID);
             
             ExecuteStoredProcedure();
         }
 
-        public void SPIssuedBookUpdate(Int32 IDIssuedBook, Int32 ReaderID, Int32 BookID, Int32 ReaderFormularID, string DateIssued, Int32 DateReturned, Int32 Returned) //Обновление данных о выданной книге
+        public void SPIssuedBookUpdate(Int32 IDIssuedBook, Int32 ReaderID, Int32 BookID, Int32 ReaderFormularID, string DateIssued, string DateReturned, Int32 Status_ID) //Обновление данных о выданной книге
         {
             ConfigurationProcedure("Issued_Book_Update");
 
             storedProcedure.Parameters.AddWithValue("@ID_Issued_Book", IDIssuedBook);
-            storedProcedure.Parameters.AddWithValue("@Reader_ID", ReaderID);
             storedProcedure.Parameters.AddWithValue("@Book_ID", BookID);
             storedProcedure.Parameters.AddWithValue("@Reader_Formular_ID", ReaderFormularID);
             storedProcedure.Parameters.AddWithValue("@Date_Issued", DateIssued);
             storedProcedure.Parameters.AddWithValue("@Date_Returned", DateReturned);
-            storedProcedure.Parameters.AddWithValue("@Returned", Returned);
+            storedProcedure.Parameters.AddWithValue("@Status_ID", Status_ID);
+
+            ExecuteStoredProcedure();
+        }
+        public void SPIssuedBookReturn(Int32 IDIssuedBook) //Обновление данных о пользователе
+        {
+            ConfigurationProcedure("Issued_Book_Return");
+
+            storedProcedure.Parameters.AddWithValue("@ID_Issued_Book", IDIssuedBook);
 
             ExecuteStoredProcedure();
         }

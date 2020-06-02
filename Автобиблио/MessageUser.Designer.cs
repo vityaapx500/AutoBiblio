@@ -70,6 +70,24 @@ namespace Автобиблио {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Книга успешно выдана!.
+        /// </summary>
+        internal static string BookGiveSuccess {
+            get {
+                return ResourceManager.GetString("BookGiveSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Книга успешно возвращена!.
+        /// </summary>
+        internal static string BookReturnSuccess {
+            get {
+                return ResourceManager.GetString("BookReturnSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Поиск баз данных.
         /// </summary>
         internal static string DatabaseSearch {

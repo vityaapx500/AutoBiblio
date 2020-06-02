@@ -85,7 +85,9 @@ namespace Автобиблио
                     dgvBookJournal.Columns[4].HeaderText = "Издатель";
                     dgvBookJournal.Columns[5].HeaderText = "Год издания";
                     dgvBookJournal.Columns[6].HeaderText = "Дата принятия в фонд";
-                    dgvBookJournal.Columns[7].HeaderText = "Цена";
+                    dgvBookJournal.Columns[7].Visible = false;
+                    dgvBookJournal.Columns[8].HeaderText = "Отделение";
+                    dgvBookJournal.Columns[9].HeaderText = "Цена";
                     dgvBookJournal.ClearSelection();
                 }
                 catch (Exception ex)
@@ -166,8 +168,9 @@ namespace Автобиблио
                 storedProcedures.SPBooksJournalInsert(tbBookTitle.Text, tbBookAuthor.Text, Convert.ToInt32(cbPublisher.SelectedValue.ToString()),
                     Convert.ToInt32(tbYearPublish.Text), today, Convert.ToInt32(cbOffice.SelectedValue.ToString()), Convert.ToInt32(tbPrice.Text));
             }
-            catch
+            catch (Exception ex)
             {
+                MessageBox.Show(ex.Message);
                 Registry_Class.error_message += "\n" + DateTime.Now.ToLongDateString() + "Проверьте правильность ввода данных!";
             }
 
@@ -180,19 +183,12 @@ namespace Автобиблио
             tbDateAcceptance.Clear();
             tbPrice.Clear();
         }
-        private void btnDeleteBook_Click(object sender, EventArgs e)    //кнопка Списания книги
+        private void btnDeleteBook_Click(object sender, EventArgs e)    //кнопка Списание книги
         {
             switch (MessageBox.Show(MessageUser.QuestionDeleteBook + " " + tbBookTitle.Text + "?", "Списание книги", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
             {
                 case DialogResult.Yes:
-                    if (AuthorizationForm.userRole == 1)
-                    {
-                        storedProcedures.SPBooksJournalDelete(Convert.ToInt32(dgvBookJournal.CurrentRow.Cells[0].Value.ToString()));
-                    }
-                    else
-                    {
-                        storedProcedures.SPUBooksJournalLogicalDelete(Convert.ToInt32(dgvBookJournal.CurrentRow.Cells[0].Value.ToString()));
-                    }
+                    storedProcedures.SPUBooksJournalLogicalDelete(Convert.ToInt32(dgvBookJournal.CurrentRow.Cells[0].Value.ToString()));
                     tbBookTitle.Clear();
                     tbBookAuthor.Clear();
                     cbPublisher.SelectedIndex = -1;
@@ -202,12 +198,6 @@ namespace Автобиблио
                     tbPrice.Clear();
                     break;
             }
-        }
-        //Окно Журнал фона. КОНЕЦ.
-        private void btnInsertNewReader_Click(object sender, EventArgs e)
-        {
-            InsertNewReaderForm insertNewReaderForm = new InsertNewReaderForm();
-            insertNewReaderForm.Show();
         }
         //Окно Формуляры читателей. НАЧАЛО
         private void ReadersFormularsFill() //Заполнение DataGrid данными из БД
@@ -238,17 +228,12 @@ namespace Автобиблио
             };
             Invoke(action);
         }
-        //В конец
-        private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
+        private void btnInsertNewReader_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = (MessageBox.Show("Вы действительно хотите выйти?", "Выход из системы", MessageBoxButtons.YesNo, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1));
-            if (dialogResult == DialogResult.Yes)
-            {
-                Application.Exit();
-            }
-            else e.Cancel = true;
+            InsertNewReaderForm insertNewReaderForm = new InsertNewReaderForm();
+            insertNewReaderForm.Show();
         }
-
+        //Удаление формуляра читателя
         private void btnDeleteFormular_Click(object sender, EventArgs e)
         {
             switch (MessageBox.Show("Удалить формуляр читателя?", "Удаление формуляра", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
@@ -259,12 +244,16 @@ namespace Автобиблио
                     break;
             }
         }
+        //Окно Журнал фона. КОНЕЦ
+
+        //Переменные для передачи данных читателя на форму Формуляр
         public static string FormularNumber;
         public static string CreationDate;
         public static string FIOReader;
         public static string PhoneNumber;
         public static string HomeAddress;
 
+        //Редактирвоание формуляра читателя
         private void dgvFormulars_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             FormularNumber = dgvFormulars.CurrentRow.Cells[0].Value.ToString();
@@ -280,6 +269,16 @@ namespace Автобиблио
         {
             if (e.Info != SqlNotificationInfo.Invalid)
                 ReadersFormularsFill();
+        }
+        //В конец
+        private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult dialogResult = (MessageBox.Show("Вы действительно хотите выйти?", "Выход из системы", MessageBoxButtons.YesNo, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1));
+            if (dialogResult == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+            else e.Cancel = true;
         }
     }
 }

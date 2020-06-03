@@ -23,8 +23,12 @@ namespace Автобиблио
             {
                 SqlCommand commandSearchUser = new SqlCommand("", Registry_Class.sqlConnection);
                 SqlCommand commandRoleUser = new SqlCommand("", Registry_Class.sqlConnection);
-                commandSearchUser.CommandText = "SELECT COUNT(*) FROM dbo.Users AS U WHERE U.User_Login = '" + tbLogin.Text + "' and U.User_Password = '" + tbPassword.Text + "'";
-                commandRoleUser.CommandText = "SELECT [User_Role_ID] FROM dbo.Users AS U WHERE U.User_Login = '" + tbLogin.Text + "' and U.User_Password ='" + tbPassword.Text + "'";
+                commandSearchUser.CommandText = "SELECT COUNT(*) FROM dbo.Users AS U WHERE U.User_Login = @UserLogin and U.User_Password = @UserPassword";
+                commandSearchUser.Parameters.AddWithValue("@UserLogin", tbLogin.Text);
+                commandSearchUser.Parameters.AddWithValue("@UserPassword", tbPassword.Text);
+                commandRoleUser.CommandText = "SELECT [User_Role_ID] FROM dbo.Users AS U WHERE U.User_Login = @UserLogin and U.User_Password = @UserPassword";
+                commandRoleUser.Parameters.AddWithValue("@UserLogin", tbLogin.Text);
+                commandRoleUser.Parameters.AddWithValue("@UserPassword", tbPassword.Text);
 
                 try     //нахождение пользователя таким логином и паролем
                 {
@@ -84,6 +88,11 @@ namespace Автобиблио
                 else
                     MessageBox.Show("Не удалось получить имя ОС в реестре");
             }
+        }
+        private void btnRegistr_Click(object sender, EventArgs e)
+        {
+            RegistrationForm registrationForm = new RegistrationForm();
+            registrationForm.Show();
         }
 
         private void AuthorizationForm_FormClosing(object sender, FormClosingEventArgs e)

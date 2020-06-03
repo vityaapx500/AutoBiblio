@@ -167,7 +167,7 @@ namespace Автобиблио
             ExecuteStoredProcedure();
         }
 
-        public void SPUBooksJournalLogicalDelete(Int32 IDBook) //Логическое удаление книги
+        public void SPBooksJournalLogicalDelete(Int32 IDBook) //Логическое удаление книги
         {
             ConfigurationProcedure("Journal_Logical_Delete");
 
@@ -204,7 +204,7 @@ namespace Автобиблио
             ExecuteStoredProcedure();
         }
 
-        public void SPUPublishersLogicalDelete(Int32 IDPublish) //Логическое удаление издательства
+        public void SPPublishersLogicalDelete(Int32 IDPublish) //Логическое удаление издательства
         {
             ConfigurationProcedure("Publish_Logical_Delete");
 
@@ -257,7 +257,7 @@ namespace Автобиблио
             ExecuteStoredProcedure();
         }
 
-        public void SPUIssuedBookLogicalDelete(Int32 IDIssuedBook) //Логическое удаление выданной книги
+        public void SPIssuedBookLogicalDelete(Int32 IDIssuedBook) //Логическое удаление выданной книги
         {
             ConfigurationProcedure("Issued_Book_Logical_Delete");
 
@@ -300,7 +300,7 @@ namespace Автобиблио
             ExecuteStoredProcedure();
         }
 
-        public void SPUReaderFormularLogicalDelete(Int32 IDFormular) //Логическое удаление пользователя
+        public void SPReaderFormularLogicalDelete(Int32 IDFormular) //Логическое удаление пользователя
         {
             ConfigurationProcedure("Formular_Logical_Delete");
 
@@ -343,7 +343,7 @@ namespace Автобиблио
             ExecuteStoredProcedure();
         }
 
-        public void SPUReadersLogicalDelete(Int32 IDReader) //Логическое удаление пользователя
+        public void SPReadersLogicalDelete(Int32 IDReader) //Логическое удаление пользователя
         {
             ConfigurationProcedure("Reader_Logical_Delete");
 

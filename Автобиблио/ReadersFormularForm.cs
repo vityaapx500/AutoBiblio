@@ -42,7 +42,7 @@ namespace Автобиблио
                     dbTables.dependency.OnChange += ChangeIssuedBook;
 
                     dgvIssuedBooks.DataSource = DTIssuedBook;
-                    dgvIssuedBooks.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+                    dgvIssuedBooks.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                     dgvIssuedBooks.Columns[0].HeaderText = "№ п/п";
                     dgvIssuedBooks.Columns[1].Visible = false;
                     dgvIssuedBooks.Columns[2].Visible = false;
@@ -61,7 +61,7 @@ namespace Автобиблио
             };
             Invoke(action);
         }
-        private void DTIssuedBookFill()
+        public void DTIssuedBookFill()
         {
             DBTables dbTables = new DBTables();
             dbTables.DataTableFill(DTIssuedBook, QWIssuedBook);
@@ -76,7 +76,7 @@ namespace Автобиблио
             CamSearchForm camSearchForm = new CamSearchForm();
             camSearchForm.statusProcess = true;
             camSearchForm.Show();
-            //IssuedBookFill();
+
         }
 
         private void btnReturn_Click(object sender, EventArgs e)
@@ -85,6 +85,11 @@ namespace Автобиблио
             camSearchForm.statusProcess = false;
             camSearchForm.Show();
             //IssuedBookFill();
+        }
+
+        private void ReadersFormularForm_Activated(object sender, EventArgs e)
+        {
+            DTIssuedBookFill();
         }
     }
 }

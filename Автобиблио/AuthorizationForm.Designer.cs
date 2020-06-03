@@ -41,7 +41,7 @@
             // 
             this.btnEnter.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnEnter.Location = new System.Drawing.Point(0, 172);
-            this.btnEnter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEnter.Margin = new System.Windows.Forms.Padding(4);
             this.btnEnter.Name = "btnEnter";
             this.btnEnter.Size = new System.Drawing.Size(312, 28);
             this.btnEnter.TabIndex = 25;
@@ -53,19 +53,20 @@
             // 
             this.btnRegistr.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnRegistr.Location = new System.Drawing.Point(0, 200);
-            this.btnRegistr.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRegistr.Margin = new System.Windows.Forms.Padding(4);
             this.btnRegistr.Name = "btnRegistr";
             this.btnRegistr.Size = new System.Drawing.Size(312, 28);
             this.btnRegistr.TabIndex = 26;
             this.btnRegistr.Text = "Зарегистрироваться";
             this.btnRegistr.UseVisualStyleBackColor = true;
+            this.btnRegistr.Click += new System.EventHandler(this.btnRegistr_Click);
             // 
             // tbPassword
             // 
             this.tbPassword.Dock = System.Windows.Forms.DockStyle.Top;
             this.tbPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbPassword.Location = new System.Drawing.Point(0, 132);
-            this.tbPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbPassword.Margin = new System.Windows.Forms.Padding(4);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.PasswordChar = '*';
             this.tbPassword.Size = new System.Drawing.Size(312, 30);
@@ -89,7 +90,7 @@
             this.tbLogin.Dock = System.Windows.Forms.DockStyle.Top;
             this.tbLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbLogin.Location = new System.Drawing.Point(0, 77);
-            this.tbLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbLogin.Margin = new System.Windows.Forms.Padding(4);
             this.tbLogin.Name = "tbLogin";
             this.tbLogin.Size = new System.Drawing.Size(312, 30);
             this.tbLogin.TabIndex = 23;
@@ -131,7 +132,7 @@
             this.Controls.Add(this.tbLogin);
             this.Controls.Add(this.lblLogin);
             this.Controls.Add(this.lblTitle);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AuthorizationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Авторизация";

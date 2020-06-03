@@ -103,7 +103,8 @@ namespace Автобиблио
                         dBStoredProcedures.SPIssuedBookInsert(Convert.ToInt32(ScanResult), Convert.ToInt32(MainWindow.FormularNumber), dtpDateIssued.Text, dtpDateReturned.Text, 2);
                         //dbTables.dependency.OnChange += ChangeIssuedBook;
                         var result = MessageBox.Show(MessageUser.BookGiveSuccess, MessageUser.TitleApp, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        if(result == DialogResult.OK) Close();
+                        MessageBox.Show("Работает");
+                        if (result == DialogResult.OK) Close();
                     }
                     catch (Exception ex)
                     {

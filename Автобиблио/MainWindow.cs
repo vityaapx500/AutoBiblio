@@ -12,6 +12,7 @@ namespace Автобиблио
         private Thread threadConnection;
         private static DateTime dateToday = DateTime.Now;
         private string today = dateToday.Date.ToString("dd.MM.yyyy");
+        private Server server = new Server();
                     
         public MainWindow()
         {
@@ -28,7 +29,6 @@ namespace Автобиблио
             Thread threadFormularsFill = new Thread(ReadersFormularsFill);
             threadFormularsFill.Start();
             tbDateAcceptance.Text = today;
-            
         }
         private void InformationConnection(bool value)  //проверка подключения к базе данных
         {
@@ -186,7 +186,7 @@ namespace Автобиблио
             switch (MessageBox.Show(MessageUser.QuestionDeleteBook + " " + tbBookTitle.Text + "?", "Списание книги", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
             {
                 case DialogResult.Yes:
-                    storedProcedures.SPUBooksJournalLogicalDelete(Convert.ToInt32(dgvBookJournal.CurrentRow.Cells[0].Value.ToString()));
+                    storedProcedures.SPBooksJournalLogicalDelete(Convert.ToInt32(dgvBookJournal.CurrentRow.Cells[0].Value.ToString()));
                     tbBookTitle.Clear();
                     tbBookAuthor.Clear();
                     cbPublisher.SelectedIndex = -1;
@@ -269,6 +269,8 @@ namespace Автобиблио
         //В конец
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
+            //server.threadServer.Abort();
+            server.listenerStop();
             DialogResult dialogResult = (MessageBox.Show("Вы действительно хотите выйти?", "Выход из системы", MessageBoxButtons.YesNo, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1));
             if (dialogResult == DialogResult.Yes)
             {
@@ -291,6 +293,18 @@ namespace Автобиблио
 
             CreateQRCodeForm createQRCodeForm = new CreateQRCodeForm();
             createQRCodeForm.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Server server = new Server();
+            server.ServerActivate();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //Server server = new Server();
+            //server.listenerStop();
         }
     }
 }

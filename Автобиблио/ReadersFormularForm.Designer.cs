@@ -201,6 +201,7 @@
             this.Name = "ReadersFormularForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Формуляр читателя";
+            this.Activated += new System.EventHandler(this.ReadersFormularForm_Activated);
             this.Load += new System.EventHandler(this.ReadersFormularForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnTitle.ResumeLayout(false);

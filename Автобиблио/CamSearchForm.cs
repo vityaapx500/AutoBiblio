@@ -2,6 +2,7 @@
 using AForge.Video;
 using System.Drawing;
 using System.Threading;
+using System.Data.SqlClient;
 using AForge.Video.DirectShow;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -16,6 +17,7 @@ namespace Автобиблио
         private VideoCaptureDevice videoSource; //Камера, источник изображения
         private ReadersFormularForm readersFormular = new ReadersFormularForm();
         private DBStoredProcedures dBStoredProcedures = new DBStoredProcedures();
+        private DBTables dbTables = new DBTables();
         public string ScanResult;
         public bool statusProcess;
         public CamSearchForm()
@@ -99,6 +101,7 @@ namespace Автобиблио
                     try
                     {
                         dBStoredProcedures.SPIssuedBookInsert(Convert.ToInt32(ScanResult), Convert.ToInt32(MainWindow.FormularNumber), dtpDateIssued.Text, dtpDateReturned.Text, 2);
+                        //dbTables.dependency.OnChange += ChangeIssuedBook;
                         var result = MessageBox.Show(MessageUser.BookGiveSuccess, MessageUser.TitleApp, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         if(result == DialogResult.OK) Close();
                     }
@@ -111,6 +114,7 @@ namespace Автобиблио
                     try
                     {
                         dBStoredProcedures.SPIssuedBookReturn(Convert.ToInt32(ScanResult));
+                        //dbTables.dependency.OnChange += ChangeIssuedBook;
                         var result = MessageBox.Show(MessageUser.BookReturnSuccess, MessageUser.TitleApp, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         if (result == DialogResult.OK) Close();
                     }
@@ -121,6 +125,12 @@ namespace Автобиблио
                     break;
             }
         }
+        //public void ChangeIssuedBook(object sender, SqlNotificationEventArgs e)
+        //{
+        //    ReadersFormularForm readersFormularForm = new ReadersFormularForm();
+        //    if (e.Info != SqlNotificationInfo.Invalid)
+        //        readersFormularForm.IssuedBookFill();
+        //}
         private void CamSearchForm_FormClosing(object sender, FormClosingEventArgs e) //корректное закрытие формы, завершение всех процессов
         {
             try

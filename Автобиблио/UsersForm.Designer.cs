@@ -33,14 +33,6 @@
             this.btnFiltration = new System.Windows.Forms.Button();
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.gbManipulation = new System.Windows.Forms.GroupBox();
-            this.pbButtons = new System.Windows.Forms.Panel();
-            this.btnDeleteUser = new System.Windows.Forms.Button();
-            this.btnUpdateUser = new System.Windows.Forms.Button();
-            this.btnInsertUser = new System.Windows.Forms.Button();
-            this.cbRole = new System.Windows.Forms.ComboBox();
-            this.lblRole = new System.Windows.Forms.Label();
-            this.cbOffice = new System.Windows.Forms.ComboBox();
-            this.lblOffice = new System.Windows.Forms.Label();
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.lblPassword = new System.Windows.Forms.Label();
             this.tbLogin = new System.Windows.Forms.TextBox();
@@ -51,6 +43,14 @@
             this.lblName = new System.Windows.Forms.Label();
             this.tbSurName = new System.Windows.Forms.TextBox();
             this.lblSurName = new System.Windows.Forms.Label();
+            this.cbOffice = new System.Windows.Forms.ComboBox();
+            this.lblOffice = new System.Windows.Forms.Label();
+            this.pbButtons = new System.Windows.Forms.Panel();
+            this.btnDeleteUser = new System.Windows.Forms.Button();
+            this.btnUpdateUser = new System.Windows.Forms.Button();
+            this.btnInsertUser = new System.Windows.Forms.Button();
+            this.cbRole = new System.Windows.Forms.ComboBox();
+            this.lblRole = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.pnSearch.SuspendLayout();
             this.gbManipulation.SuspendLayout();
@@ -59,11 +59,17 @@
             // 
             // dgvUsers
             // 
+            this.dgvUsers.AllowUserToAddRows = false;
+            this.dgvUsers.AllowUserToDeleteRows = false;
+            this.dgvUsers.AllowUserToOrderColumns = true;
+            this.dgvUsers.BackgroundColor = System.Drawing.Color.White;
             this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUsers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvUsers.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvUsers.Location = new System.Drawing.Point(336, 49);
             this.dgvUsers.Margin = new System.Windows.Forms.Padding(4);
             this.dgvUsers.Name = "dgvUsers";
+            this.dgvUsers.ReadOnly = true;
             this.dgvUsers.Size = new System.Drawing.Size(867, 460);
             this.dgvUsers.TabIndex = 22;
             // 
@@ -127,93 +133,6 @@
             this.gbManipulation.TabIndex = 20;
             this.gbManipulation.TabStop = false;
             this.gbManipulation.Text = "Манипуляция данными";
-            // 
-            // pbButtons
-            // 
-            this.pbButtons.Controls.Add(this.btnDeleteUser);
-            this.pbButtons.Controls.Add(this.btnUpdateUser);
-            this.pbButtons.Controls.Add(this.btnInsertUser);
-            this.pbButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pbButtons.Location = new System.Drawing.Point(4, 389);
-            this.pbButtons.Margin = new System.Windows.Forms.Padding(4);
-            this.pbButtons.Name = "pbButtons";
-            this.pbButtons.Size = new System.Drawing.Size(328, 116);
-            this.pbButtons.TabIndex = 14;
-            // 
-            // btnDeleteUser
-            // 
-            this.btnDeleteUser.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnDeleteUser.Location = new System.Drawing.Point(0, 76);
-            this.btnDeleteUser.Margin = new System.Windows.Forms.Padding(4);
-            this.btnDeleteUser.Name = "btnDeleteUser";
-            this.btnDeleteUser.Size = new System.Drawing.Size(328, 38);
-            this.btnDeleteUser.TabIndex = 2;
-            this.btnDeleteUser.Text = "Удалить пользователя";
-            this.btnDeleteUser.UseVisualStyleBackColor = true;
-            // 
-            // btnUpdateUser
-            // 
-            this.btnUpdateUser.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnUpdateUser.Location = new System.Drawing.Point(0, 38);
-            this.btnUpdateUser.Margin = new System.Windows.Forms.Padding(4);
-            this.btnUpdateUser.Name = "btnUpdateUser";
-            this.btnUpdateUser.Size = new System.Drawing.Size(328, 38);
-            this.btnUpdateUser.TabIndex = 1;
-            this.btnUpdateUser.Text = "Изменить данные пользователя";
-            this.btnUpdateUser.UseVisualStyleBackColor = true;
-            // 
-            // btnInsertUser
-            // 
-            this.btnInsertUser.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnInsertUser.Location = new System.Drawing.Point(0, 0);
-            this.btnInsertUser.Margin = new System.Windows.Forms.Padding(4);
-            this.btnInsertUser.Name = "btnInsertUser";
-            this.btnInsertUser.Size = new System.Drawing.Size(328, 38);
-            this.btnInsertUser.TabIndex = 0;
-            this.btnInsertUser.Text = "Добавить пользователя";
-            this.btnInsertUser.UseVisualStyleBackColor = true;
-            // 
-            // cbRole
-            // 
-            this.cbRole.Dock = System.Windows.Forms.DockStyle.Top;
-            this.cbRole.FormattingEnabled = true;
-            this.cbRole.Location = new System.Drawing.Point(4, 36);
-            this.cbRole.Margin = new System.Windows.Forms.Padding(4);
-            this.cbRole.Name = "cbRole";
-            this.cbRole.Size = new System.Drawing.Size(328, 24);
-            this.cbRole.TabIndex = 1;
-            // 
-            // lblRole
-            // 
-            this.lblRole.AutoSize = true;
-            this.lblRole.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblRole.Location = new System.Drawing.Point(4, 19);
-            this.lblRole.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblRole.Name = "lblRole";
-            this.lblRole.Size = new System.Drawing.Size(40, 17);
-            this.lblRole.TabIndex = 0;
-            this.lblRole.Text = "Роль";
-            // 
-            // cbOffice
-            // 
-            this.cbOffice.Dock = System.Windows.Forms.DockStyle.Top;
-            this.cbOffice.FormattingEnabled = true;
-            this.cbOffice.Location = new System.Drawing.Point(4, 77);
-            this.cbOffice.Margin = new System.Windows.Forms.Padding(4);
-            this.cbOffice.Name = "cbOffice";
-            this.cbOffice.Size = new System.Drawing.Size(328, 24);
-            this.cbOffice.TabIndex = 16;
-            // 
-            // lblOffice
-            // 
-            this.lblOffice.AutoSize = true;
-            this.lblOffice.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblOffice.Location = new System.Drawing.Point(4, 60);
-            this.lblOffice.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblOffice.Name = "lblOffice";
-            this.lblOffice.Size = new System.Drawing.Size(82, 17);
-            this.lblOffice.TabIndex = 15;
-            this.lblOffice.Text = "Отделение";
             // 
             // tbPassword
             // 
@@ -315,7 +234,94 @@
             this.lblSurName.TabIndex = 21;
             this.lblSurName.Text = "Фамилия";
             // 
-            // Users
+            // cbOffice
+            // 
+            this.cbOffice.Dock = System.Windows.Forms.DockStyle.Top;
+            this.cbOffice.FormattingEnabled = true;
+            this.cbOffice.Location = new System.Drawing.Point(4, 77);
+            this.cbOffice.Margin = new System.Windows.Forms.Padding(4);
+            this.cbOffice.Name = "cbOffice";
+            this.cbOffice.Size = new System.Drawing.Size(328, 24);
+            this.cbOffice.TabIndex = 16;
+            // 
+            // lblOffice
+            // 
+            this.lblOffice.AutoSize = true;
+            this.lblOffice.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblOffice.Location = new System.Drawing.Point(4, 60);
+            this.lblOffice.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblOffice.Name = "lblOffice";
+            this.lblOffice.Size = new System.Drawing.Size(82, 17);
+            this.lblOffice.TabIndex = 15;
+            this.lblOffice.Text = "Отделение";
+            // 
+            // pbButtons
+            // 
+            this.pbButtons.Controls.Add(this.btnDeleteUser);
+            this.pbButtons.Controls.Add(this.btnUpdateUser);
+            this.pbButtons.Controls.Add(this.btnInsertUser);
+            this.pbButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pbButtons.Location = new System.Drawing.Point(4, 389);
+            this.pbButtons.Margin = new System.Windows.Forms.Padding(4);
+            this.pbButtons.Name = "pbButtons";
+            this.pbButtons.Size = new System.Drawing.Size(328, 116);
+            this.pbButtons.TabIndex = 14;
+            // 
+            // btnDeleteUser
+            // 
+            this.btnDeleteUser.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnDeleteUser.Location = new System.Drawing.Point(0, 76);
+            this.btnDeleteUser.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDeleteUser.Name = "btnDeleteUser";
+            this.btnDeleteUser.Size = new System.Drawing.Size(328, 38);
+            this.btnDeleteUser.TabIndex = 2;
+            this.btnDeleteUser.Text = "Удалить пользователя";
+            this.btnDeleteUser.UseVisualStyleBackColor = true;
+            // 
+            // btnUpdateUser
+            // 
+            this.btnUpdateUser.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnUpdateUser.Location = new System.Drawing.Point(0, 38);
+            this.btnUpdateUser.Margin = new System.Windows.Forms.Padding(4);
+            this.btnUpdateUser.Name = "btnUpdateUser";
+            this.btnUpdateUser.Size = new System.Drawing.Size(328, 38);
+            this.btnUpdateUser.TabIndex = 1;
+            this.btnUpdateUser.Text = "Изменить данные пользователя";
+            this.btnUpdateUser.UseVisualStyleBackColor = true;
+            // 
+            // btnInsertUser
+            // 
+            this.btnInsertUser.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnInsertUser.Location = new System.Drawing.Point(0, 0);
+            this.btnInsertUser.Margin = new System.Windows.Forms.Padding(4);
+            this.btnInsertUser.Name = "btnInsertUser";
+            this.btnInsertUser.Size = new System.Drawing.Size(328, 38);
+            this.btnInsertUser.TabIndex = 0;
+            this.btnInsertUser.Text = "Добавить пользователя";
+            this.btnInsertUser.UseVisualStyleBackColor = true;
+            // 
+            // cbRole
+            // 
+            this.cbRole.Dock = System.Windows.Forms.DockStyle.Top;
+            this.cbRole.FormattingEnabled = true;
+            this.cbRole.Location = new System.Drawing.Point(4, 36);
+            this.cbRole.Margin = new System.Windows.Forms.Padding(4);
+            this.cbRole.Name = "cbRole";
+            this.cbRole.Size = new System.Drawing.Size(328, 24);
+            this.cbRole.TabIndex = 1;
+            // 
+            // lblRole
+            // 
+            this.lblRole.AutoSize = true;
+            this.lblRole.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblRole.Location = new System.Drawing.Point(4, 19);
+            this.lblRole.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblRole.Name = "lblRole";
+            this.lblRole.Size = new System.Drawing.Size(40, 17);
+            this.lblRole.TabIndex = 0;
+            this.lblRole.Text = "Роль";
+            // 
+            // UsersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -323,7 +329,7 @@
             this.Controls.Add(this.dgvUsers);
             this.Controls.Add(this.pnSearch);
             this.Controls.Add(this.gbManipulation);
-            this.Name = "Users";
+            this.Name = "UsersForm";
             this.Text = "Users";
             this.Load += new System.EventHandler(this.Users_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();

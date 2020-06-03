@@ -78,6 +78,12 @@
     <Compile Include="ConnectionForm.Designer.cs">
       <DependentUpon>ConnectionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CreateQRCodeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateQRCodeForm.Designer.cs">
+      <DependentUpon>CreateQRCodeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DBConnection.cs" />
     <Compile Include="DBStoredProcedures.cs" />
     <Compile Include="DBTables.cs" />
@@ -133,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ConnectionForm.resx">
       <DependentUpon>ConnectionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateQRCodeForm.resx">
+      <DependentUpon>CreateQRCodeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InsertNewReaderForm.resx">
       <DependentUpon>InsertNewReaderForm.cs</DependentUpon>

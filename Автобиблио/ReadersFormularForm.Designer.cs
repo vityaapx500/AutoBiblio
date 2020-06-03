@@ -146,8 +146,10 @@
             // dgvIssuedBooks
             // 
             this.dgvIssuedBooks.AllowUserToAddRows = false;
+            this.dgvIssuedBooks.AllowUserToDeleteRows = false;
             this.dgvIssuedBooks.BackgroundColor = System.Drawing.Color.White;
             this.dgvIssuedBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvIssuedBooks.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvIssuedBooks.Location = new System.Drawing.Point(15, 241);
             this.dgvIssuedBooks.Margin = new System.Windows.Forms.Padding(4);
             this.dgvIssuedBooks.Name = "dgvIssuedBooks";

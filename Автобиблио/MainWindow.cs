@@ -39,12 +39,12 @@ namespace Автобиблио
                     switch (value)
                     {
                         case (true):
-                            //lbsstConnection.Text = Registry_Class.DataSource + "\\" + Registry_Class.DSServerName + " - " + Registry_Class.InitialCatalog;
+                            lbsstConnection.Text = Registry_Class.DataSource + "\\" + Registry_Class.DSServerName + " - " + Registry_Class.InitialCatalog;
                             AuthorizationForm authorizationForm = new AuthorizationForm();
                             authorizationForm.Show();
                             break;
                         case (false):
-                            //lbsstConnection.Text = MessageUser.NoConnection;
+                            lbsstConnection.Text = MessageUser.NoConnection;
 
                             foreach (Form f in Application.OpenForms)
                             {
@@ -87,7 +87,7 @@ namespace Автобиблио
                     dgvBookJournal.Columns[6].HeaderText = "Дата принятия в фонд";
                     dgvBookJournal.Columns[7].Visible = false;
                     dgvBookJournal.Columns[8].HeaderText = "Отделение";
-                    dgvBookJournal.Columns[9].HeaderText = "Цена";
+                    dgvBookJournal.Columns[9].HeaderText = "Цена (руб.)";
                     dgvBookJournal.ClearSelection();
                 }
                 catch (Exception ex)
@@ -180,8 +180,6 @@ namespace Автобиблио
             tbYearPublish.Clear();
             cbOffice.SelectedIndex = -1;
             tbPrice.Clear();
-            tbDateAcceptance.Clear();
-            tbPrice.Clear();
         }
         private void btnDeleteBook_Click(object sender, EventArgs e)    //кнопка Списание книги
         {
@@ -193,8 +191,6 @@ namespace Автобиблио
                     tbBookAuthor.Clear();
                     cbPublisher.SelectedIndex = -1;
                     tbYearPublish.Clear();
-                    tbPrice.Clear();
-                    tbDateAcceptance.Clear();
                     tbPrice.Clear();
                     break;
             }
@@ -279,6 +275,22 @@ namespace Автобиблио
                 Application.Exit();
             }
             else e.Cancel = true;
+        }
+        public static string IDBook;
+        public static string BookTitle;
+        public static string BookAuthor;
+        public static string Publisher;
+        public static string YearPublish;
+        private void btnCreateQRCode_Click(object sender, EventArgs e)
+        {
+            IDBook = dgvBookJournal.CurrentRow.Cells[0].Value.ToString();
+            BookTitle = dgvBookJournal.CurrentRow.Cells[1].Value.ToString();
+            BookAuthor = dgvBookJournal.CurrentRow.Cells[2].Value.ToString();
+            Publisher = dgvBookJournal.CurrentRow.Cells[4].Value.ToString();
+            YearPublish = dgvBookJournal.CurrentRow.Cells[5].Value.ToString();
+
+            CreateQRCodeForm createQRCodeForm = new CreateQRCodeForm();
+            createQRCodeForm.ShowDialog();
         }
     }
 }

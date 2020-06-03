@@ -43,6 +43,7 @@
             this.BooksJournal = new System.Windows.Forms.TabPage();
             this.dgvBookJournal = new System.Windows.Forms.DataGridView();
             this.gbManipulationData = new System.Windows.Forms.GroupBox();
+            this.btnCreateQRCode = new System.Windows.Forms.Button();
             this.tbPrice = new System.Windows.Forms.TextBox();
             this.lblPrice = new System.Windows.Forms.Label();
             this.cbOffice = new System.Windows.Forms.ComboBox();
@@ -155,6 +156,7 @@
             this.dgvFormulars.BackgroundColor = System.Drawing.Color.White;
             this.dgvFormulars.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFormulars.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvFormulars.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvFormulars.Location = new System.Drawing.Point(0, 36);
             this.dgvFormulars.Margin = new System.Windows.Forms.Padding(4);
             this.dgvFormulars.Name = "dgvFormulars";
@@ -213,9 +215,12 @@
             // 
             // dgvBookJournal
             // 
+            this.dgvBookJournal.AllowUserToAddRows = false;
+            this.dgvBookJournal.AllowUserToDeleteRows = false;
             this.dgvBookJournal.BackgroundColor = System.Drawing.Color.White;
             this.dgvBookJournal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBookJournal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvBookJournal.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvBookJournal.Location = new System.Drawing.Point(251, 4);
             this.dgvBookJournal.Margin = new System.Windows.Forms.Padding(4);
             this.dgvBookJournal.Name = "dgvBookJournal";
@@ -224,6 +229,7 @@
             // 
             // gbManipulationData
             // 
+            this.gbManipulationData.Controls.Add(this.btnCreateQRCode);
             this.gbManipulationData.Controls.Add(this.tbPrice);
             this.gbManipulationData.Controls.Add(this.lblPrice);
             this.gbManipulationData.Controls.Add(this.cbOffice);
@@ -249,6 +255,19 @@
             this.gbManipulationData.TabIndex = 20;
             this.gbManipulationData.TabStop = false;
             this.gbManipulationData.Text = "Манипулирование даннными:";
+            // 
+            // btnCreateQRCode
+            // 
+            this.btnCreateQRCode.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnCreateQRCode.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnCreateQRCode.Location = new System.Drawing.Point(4, 334);
+            this.btnCreateQRCode.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCreateQRCode.Name = "btnCreateQRCode";
+            this.btnCreateQRCode.Size = new System.Drawing.Size(239, 38);
+            this.btnCreateQRCode.TabIndex = 61;
+            this.btnCreateQRCode.Text = "Создать QR-код для книги";
+            this.btnCreateQRCode.UseVisualStyleBackColor = true;
+            this.btnCreateQRCode.Click += new System.EventHandler(this.btnCreateQRCode_Click);
             // 
             // tbPrice
             // 
@@ -532,6 +551,7 @@
         private System.Windows.Forms.Label lblOffice;
         public System.Windows.Forms.DataGridView dgvFormulars;
         private System.Windows.Forms.Button btnDeleteFormular;
+        public System.Windows.Forms.Button btnCreateQRCode;
     }
 }
 

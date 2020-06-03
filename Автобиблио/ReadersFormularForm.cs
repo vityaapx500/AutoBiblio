@@ -30,7 +30,7 @@ namespace Автобиблио
             Thread threadIssuedBookFill = new Thread(IssuedBookFill);
             threadIssuedBookFill.Start();
         }
-        private void IssuedBookFill()
+        public void IssuedBookFill()
         {
             DBTables dbTables = new DBTables();
             Action action = () =>
@@ -42,7 +42,7 @@ namespace Автобиблио
                     dbTables.dependency.OnChange += ChangeIssuedBook;
 
                     dgvIssuedBooks.DataSource = DTIssuedBook;
-                    dgvIssuedBooks.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    dgvIssuedBooks.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
                     dgvIssuedBooks.Columns[0].HeaderText = "№ п/п";
                     dgvIssuedBooks.Columns[1].Visible = false;
                     dgvIssuedBooks.Columns[2].Visible = false;
@@ -66,7 +66,7 @@ namespace Автобиблио
             DBTables dbTables = new DBTables();
             dbTables.DataTableFill(DTIssuedBook, QWIssuedBook);
         }
-        private void ChangeIssuedBook(object sender, SqlNotificationEventArgs e)
+        public void ChangeIssuedBook(object sender, SqlNotificationEventArgs e)
         {
             if (e.Info != SqlNotificationInfo.Invalid)
                 IssuedBookFill();
@@ -76,7 +76,7 @@ namespace Автобиблио
             CamSearchForm camSearchForm = new CamSearchForm();
             camSearchForm.statusProcess = true;
             camSearchForm.Show();
-            IssuedBookFill();
+            //IssuedBookFill();
         }
 
         private void btnReturn_Click(object sender, EventArgs e)
@@ -84,7 +84,7 @@ namespace Автобиблио
             CamSearchForm camSearchForm = new CamSearchForm();
             camSearchForm.statusProcess = false;
             camSearchForm.Show();
-            IssuedBookFill();
+            //IssuedBookFill();
         }
     }
 }

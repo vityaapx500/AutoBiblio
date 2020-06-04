@@ -68,7 +68,7 @@ namespace Автобиблио
         }
         public void ChangeIssuedBook(object sender, SqlNotificationEventArgs e)
         {
-            if (e.Info != SqlNotificationInfo.Invalid)
+            if (e.Info != SqlNotificationInfo.Update || e.Info != SqlNotificationInfo.Invalid)
                 IssuedBookFill();
         }
         private void btnGiveBook_Click(object sender, EventArgs e)

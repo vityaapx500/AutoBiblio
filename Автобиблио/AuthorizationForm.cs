@@ -21,11 +21,10 @@ namespace Автобиблио
                 MessageBox.Show("Все поля должны быть заполнены", "СОШ №654", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
-                SqlCommand commandSearchUser = new SqlCommand("", Registry_Class.sqlConnection);
+                SqlCommand commandSearchUserPassword = new SqlCommand("SELECT U.User_Password FROM dbo.Users AS U WHERE U.User_Login = @UserLogin", Registry_Class.sqlConnection);
+                commandSearchUserPassword.Parameters.AddWithValue("@UserLogin", tbLogin.Text);
+
                 SqlCommand commandRoleUser = new SqlCommand("", Registry_Class.sqlConnection);
-                commandSearchUser.CommandText = "SELECT COUNT(*) FROM dbo.Users AS U WHERE U.User_Login = @UserLogin and U.User_Password = @UserPassword";
-                commandSearchUser.Parameters.AddWithValue("@UserLogin", tbLogin.Text);
-                commandSearchUser.Parameters.AddWithValue("@UserPassword", tbPassword.Text);
                 commandRoleUser.CommandText = "SELECT [User_Role_ID] FROM dbo.Users AS U WHERE U.User_Login = @UserLogin and U.User_Password = @UserPassword";
                 commandRoleUser.Parameters.AddWithValue("@UserLogin", tbLogin.Text);
                 commandRoleUser.Parameters.AddWithValue("@UserPassword", tbPassword.Text);
@@ -33,7 +32,19 @@ namespace Автобиблио
                 try     //нахождение пользователя таким логином и паролем
                 {
                     Registry_Class.sqlConnection.Open();
-                    checkUser = Convert.ToInt32(commandSearchUser.ExecuteScalar().ToString());
+                    SqlDataReader reader = commandSearchUserPassword.ExecuteReader();
+                    reader.Read();
+                    if (tbPassword.Text != null && BCrypt.Net.BCrypt.Verify(tbPassword.Text, String.Format("{0}", reader[0])))
+                    {
+                        reader.Close();
+                        //userRole = Convert.ToInt32(commandRoleUser.ExecuteScalar().ToString());
+                        Registry_Class.sqlConnection.Close();
+                        MessageBox.Show("Вы авторизовались в информационной системе.", "СОШ №654", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Hide();
+                        MainWindow mainWindow = new MainWindow();
+                        mainWindow.Show();
+                    }
+                    else MessageBox.Show("Пользователя с данным логином и паролем не обнаружено! Проверьте правильность ввода данных или зарегистрируйтесь.", "СОШ №654", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 catch
                 {
@@ -44,19 +55,7 @@ namespace Автобиблио
                     Registry_Class.sqlConnection.Close();
                 }
 
-                if (checkUser == 0)
-                    MessageBox.Show("Пользователя с данным логином и паролем не обнаружено! Проверьте правильность ввода данных или зарегистрируйтесь.", "СОШ №654", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                else     //установление роли данного пользователя
-                {
-                    Registry_Class.sqlConnection.Open();
-                    userRole = Convert.ToInt32(commandRoleUser.ExecuteScalar().ToString());
-                    Registry_Class.sqlConnection.Close();
-                    MessageBox.Show("Вы авторизовались в информационной системе.", "СОШ №654", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Hide();
-                    LogoForm logoForm = new LogoForm();
-                    MainWindow mainWindow = new MainWindow();
-                    mainWindow.Show();
-                }
+                
             }
         }
         private void tbPassword_KeyPress(object sender, KeyPressEventArgs e)

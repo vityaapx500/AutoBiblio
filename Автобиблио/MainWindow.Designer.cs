@@ -62,9 +62,9 @@
             this.pnComboBox = new System.Windows.Forms.Panel();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnInsertBook = new System.Windows.Forms.Button();
-            this.Settings = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
+            this.API = new System.Windows.Forms.TabPage();
             this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.sstMain.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tcMainControl.SuspendLayout();
@@ -75,7 +75,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookJournal)).BeginInit();
             this.gbManipulationData.SuspendLayout();
             this.pnComboBox.SuspendLayout();
-            this.Settings.SuspendLayout();
+            this.API.SuspendLayout();
             this.SuspendLayout();
             // 
             // sstMain
@@ -131,7 +131,7 @@
             // 
             this.tcMainControl.Controls.Add(this.ReadersFormulars);
             this.tcMainControl.Controls.Add(this.BooksJournal);
-            this.tcMainControl.Controls.Add(this.Settings);
+            this.tcMainControl.Controls.Add(this.API);
             this.tcMainControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcMainControl.Location = new System.Drawing.Point(0, 28);
             this.tcMainControl.Margin = new System.Windows.Forms.Padding(4);
@@ -476,17 +476,26 @@
             this.btnInsertBook.UseVisualStyleBackColor = true;
             this.btnInsertBook.Click += new System.EventHandler(this.btnNewBook_Click);
             // 
-            // Settings
+            // API
             // 
-            this.Settings.Controls.Add(this.button2);
-            this.Settings.Controls.Add(this.button1);
-            this.Settings.Location = new System.Drawing.Point(4, 25);
-            this.Settings.Margin = new System.Windows.Forms.Padding(4);
-            this.Settings.Name = "Settings";
-            this.Settings.Size = new System.Drawing.Size(1419, 633);
-            this.Settings.TabIndex = 5;
-            this.Settings.Text = "Настройки";
-            this.Settings.UseVisualStyleBackColor = true;
+            this.API.Controls.Add(this.button2);
+            this.API.Controls.Add(this.button1);
+            this.API.Location = new System.Drawing.Point(4, 25);
+            this.API.Margin = new System.Windows.Forms.Padding(4);
+            this.API.Name = "API";
+            this.API.Size = new System.Drawing.Size(1419, 633);
+            this.API.TabIndex = 5;
+            this.API.Text = "API";
+            this.API.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(684, 89);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(239, 136);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -497,16 +506,6 @@
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(684, 89);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(239, 136);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // MainWindow
             // 
@@ -536,7 +535,7 @@
             this.gbManipulationData.ResumeLayout(false);
             this.gbManipulationData.PerformLayout();
             this.pnComboBox.ResumeLayout(false);
-            this.Settings.ResumeLayout(false);
+            this.API.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -570,7 +569,7 @@
         private System.Windows.Forms.Panel pnComboBox;
         public System.Windows.Forms.Button btnDelete;
         public System.Windows.Forms.Button btnInsertBook;
-        private System.Windows.Forms.TabPage Settings;
+        private System.Windows.Forms.TabPage API;
         private System.Windows.Forms.TextBox tbPrice;
         private System.Windows.Forms.Label lblPrice;
         private System.Windows.Forms.ComboBox cbOffice;

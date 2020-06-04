@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Net;
 using System.Data.SqlClient;
-using System.Threading;
-using System.Data;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Newtonsoft.Json;
@@ -11,45 +9,28 @@ namespace Автобиблио
 {
     class Server
     {
-        //public Thread threadServer = new Thread(ServerActivate);
-        private static bool process;
+        public static bool process;
+        private static HttpListener listener;
         public class Book
         {
             public string title;
             public string year;
-            public string bookAuthor;
-            public string Publisher;
         }
-        static HttpListener listener;
         public void ServerActivate()
         {
-
-            //Book book = new Book();
-            //Book book1 = new Book();
-            //book.title = "Война и мир";
-            //book.date = "1905";
-            //book1.title = "Горе от ума";
-            //book1.date = "1890";
-            //List<Book> vector = new List<Book>();
-            //vector.Add(book);
-            //vector.Add(book1);
-
-            //string json_output = JsonConvert.SerializeObject(vector);
-
             string[] prefixes = { "http://localhost:8086/books/" };
             if (!HttpListener.IsSupported)
             {
                 Console.WriteLine("Windows XP SP2 or Server 2003 is required to use the HttpListener class.");
                 return;
             }
-            // URI prefixes are required,
-            // for example "http://contoso.com:8080/index/".
+            // Префикс для URI,
             if (prefixes == null || prefixes.Length == 0)
                 throw new ArgumentException("prefixes");
 
-            // Create a listener.
+            // Создание объекта прослушки
             listener = new HttpListener();
-            // Add the prefixes.
+            // Добавление префикса
             foreach (string s in prefixes)
             {
                 listener.Prefixes.Add(s);
@@ -59,11 +40,10 @@ namespace Автобиблио
             process = true;
             while (process)
             {
-                    // Note: The GetContext method blocks while waiting for a request.
-                    HttpListenerContext context = listener.GetContext();
+                HttpListenerContext context = listener.GetContext();
                 HttpListenerRequest request = context.Request;
-                //MessageBox.Show(request.QueryString.Get("format"));
-                // Obtain a response object.
+                
+                // Рвспределение ответа сервера по виду запроса
 
                 SqlCommand command = new SqlCommand("", Registry_Class.sqlConnection);
                 if (request.QueryString.Get("author") != null && request.QueryString.Get("year") != null)
@@ -96,8 +76,7 @@ namespace Автобиблио
                         }
                     }
                 }
-                ////try
-                //{
+                
                 List<Book> vector = new List<Book>();
                 Registry_Class.sqlConnection.Open();
                 SqlDataReader reader = command.ExecuteReader();
@@ -108,36 +87,25 @@ namespace Автобиблио
                     book.year = String.Format("{0}", reader["Year_Publish"]);
                     vector.Add(book);
                 }
-
-                //}
-                //catch
-                //{
-
-                //}
-                //finally
-                //{
                 Registry_Class.sqlConnection.Close();
-                //}
 
                 string json_output = JsonConvert.SerializeObject(vector);
 
                 HttpListenerResponse response = context.Response;
                 response.ContentType = "application/json";
-                // Construct a response.
-                //string responseString = "<HTML><BODY> Hello world!</BODY></HTML>";
+                // Сборка вывода в формате JSON
                 string responseString = json_output;
                 byte[] buffer = System.Text.Encoding.UTF8.GetBytes(responseString);
                 // Get a response stream and write the response to it.
                 response.ContentLength64 = buffer.Length;
                 System.IO.Stream output = response.OutputStream;
                 output.Write(buffer, 0, buffer.Length);
-                // You must close the output stream.
                 output.Close();
+                //Вопрос Продолжить?
                 DialogResult dialogResult = (MessageBox.Show("Продолжать?", MessageUser.TitleApp, MessageBoxButtons.YesNo));
                 if (dialogResult == DialogResult.Yes)
                     process = true;
                 else process = false;
-                //listener.Stop();
             }
         }
         public void listenerStop()

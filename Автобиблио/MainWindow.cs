@@ -269,8 +269,7 @@ namespace Автобиблио
         //В конец
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //server.threadServer.Abort();
-            server.listenerStop();
+            if(Server.process == true) server.listenerStop();
             DialogResult dialogResult = (MessageBox.Show("Вы действительно хотите выйти?", "Выход из системы", MessageBoxButtons.YesNo, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1));
             if (dialogResult == DialogResult.Yes)
             {
@@ -299,12 +298,6 @@ namespace Автобиблио
         {
             Server server = new Server();
             server.ServerActivate();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            //Server server = new Server();
-            //server.listenerStop();
         }
     }
 }

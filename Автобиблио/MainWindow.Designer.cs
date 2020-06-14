@@ -33,7 +33,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.администрированиеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.пользователиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ролиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.отделенияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tcMainControl = new System.Windows.Forms.TabControl();
             this.ReadersFormulars = new System.Windows.Forms.TabPage();
             this.dgvFormulars = new System.Windows.Forms.DataGridView();
@@ -63,7 +63,6 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnInsertBook = new System.Windows.Forms.Button();
             this.API = new System.Windows.Forms.TabPage();
-            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.sstMain.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -110,7 +109,7 @@
             // 
             this.администрированиеToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.пользователиToolStripMenuItem,
-            this.ролиToolStripMenuItem});
+            this.отделенияToolStripMenuItem});
             this.администрированиеToolStripMenuItem.Name = "администрированиеToolStripMenuItem";
             this.администрированиеToolStripMenuItem.Size = new System.Drawing.Size(168, 24);
             this.администрированиеToolStripMenuItem.Text = "Администрирование";
@@ -120,12 +119,13 @@
             this.пользователиToolStripMenuItem.Name = "пользователиToolStripMenuItem";
             this.пользователиToolStripMenuItem.Size = new System.Drawing.Size(306, 26);
             this.пользователиToolStripMenuItem.Text = "Учетный записи пользователей";
+            this.пользователиToolStripMenuItem.Click += new System.EventHandler(this.пользователиToolStripMenuItem_Click);
             // 
-            // ролиToolStripMenuItem
+            // отделенияToolStripMenuItem
             // 
-            this.ролиToolStripMenuItem.Name = "ролиToolStripMenuItem";
-            this.ролиToolStripMenuItem.Size = new System.Drawing.Size(306, 26);
-            this.ролиToolStripMenuItem.Text = "Роли";
+            this.отделенияToolStripMenuItem.Name = "отделенияToolStripMenuItem";
+            this.отделенияToolStripMenuItem.Size = new System.Drawing.Size(306, 26);
+            this.отделенияToolStripMenuItem.Text = "Отделения";
             // 
             // tcMainControl
             // 
@@ -478,7 +478,6 @@
             // 
             // API
             // 
-            this.API.Controls.Add(this.button2);
             this.API.Controls.Add(this.button1);
             this.API.Location = new System.Drawing.Point(4, 25);
             this.API.Margin = new System.Windows.Forms.Padding(4);
@@ -488,22 +487,13 @@
             this.API.Text = "API";
             this.API.UseVisualStyleBackColor = true;
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(684, 89);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(239, 136);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(394, 89);
+            this.button1.Location = new System.Drawing.Point(3, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(239, 136);
+            this.button1.Size = new System.Drawing.Size(248, 83);
             this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
+            this.button1.Text = "Запуск сервера";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -547,7 +537,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem администрированиеToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem пользователиToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ролиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem отделенияToolStripMenuItem;
         private System.Windows.Forms.TabControl tcMainControl;
         private System.Windows.Forms.TabPage ReadersFormulars;
         private System.Windows.Forms.Panel pnManipulationFormular;
@@ -578,7 +568,6 @@
         private System.Windows.Forms.Button btnDeleteFormular;
         public System.Windows.Forms.Button btnCreateQRCode;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
     }
 }
 

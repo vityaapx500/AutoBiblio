@@ -175,6 +175,7 @@
             this.Name = "InsertNewReaderForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Запись нового читателя";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.InsertNewReaderForm_Load);
             this.pnComboBox.ResumeLayout(false);
             this.ResumeLayout(false);

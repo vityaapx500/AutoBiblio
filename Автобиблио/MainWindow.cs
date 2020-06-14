@@ -235,8 +235,7 @@ namespace Автобиблио
             switch (MessageBox.Show("Удалить формуляр читателя?", "Удаление формуляра", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
             {
                 case DialogResult.Yes:
-                    if (AuthorizationForm.userRole == 1)
-                        storedProcedures.SPReaderFormularDelete(Convert.ToInt32(dgvFormulars.CurrentRow.Cells[0].Value.ToString()));
+                    storedProcedures.SPReaderFormularDelete(Convert.ToInt32(dgvFormulars.CurrentRow.Cells[0].Value.ToString()));
                     break;
             }
         }
@@ -266,17 +265,6 @@ namespace Автобиблио
             if (e.Info != SqlNotificationInfo.Invalid)
                 ReadersFormularsFill();
         }
-        //В конец
-        private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if(Server.process == true) server.listenerStop();
-            DialogResult dialogResult = (MessageBox.Show("Вы действительно хотите выйти?", "Выход из системы", MessageBoxButtons.YesNo, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1));
-            if (dialogResult == DialogResult.Yes)
-            {
-                Application.Exit();
-            }
-            else e.Cancel = true;
-        }
         public static string IDBook;
         public static string BookTitle;
         public static string BookAuthor;
@@ -298,6 +286,23 @@ namespace Автобиблио
         {
             Server server = new Server();
             server.ServerActivate();
+        }
+
+        private void пользователиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UsersForm usersForm = new UsersForm();
+            usersForm.Show();
+        }
+        //В конец
+        private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (Server.process == true) server.listenerStop();
+            DialogResult dialogResult = (MessageBox.Show("Вы действительно хотите выйти?", "Выход из системы", MessageBoxButtons.YesNo, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1));
+            if (dialogResult == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+            else e.Cancel = true;
         }
     }
 }

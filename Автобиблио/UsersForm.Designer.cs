@@ -331,6 +331,7 @@
             this.Controls.Add(this.gbManipulation);
             this.Name = "UsersForm";
             this.Text = "Users";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.Users_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
             this.pnSearch.ResumeLayout(false);
